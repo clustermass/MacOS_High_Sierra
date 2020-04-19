@@ -20,7 +20,7 @@ with free USB imaging tool included. All you need is working Windows machine and
  
 The process of reformatting the drive and converting it from APFS to HSF+ is described [here](https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/).
 
-The process of installing High Sierra on HSF+ drive without auto-converting it to APFS is described [here](http://blog.centurio.net/2018/05/01/how-to-clean-install-mac-os-high-sierra-without-apfs-on-internal-ssd/), but for me the actuall command was with double-dashed instead of single dashes. You can alternatively follow the steps below:
+The process of installing High Sierra on HSF+ drive without auto-converting it to APFS is described [here](http://blog.centurio.net/2018/05/01/how-to-clean-install-mac-os-high-sierra-without-apfs-on-internal-ssd/), but for me the actual command was with double-dashed instead of single dashes. You can alternatively follow the steps below:
 - Open Disk Utility and open a Terminal. Go to the Volume of your attached High Sierra USB Stick.
 
 - Check what is the name of your internal SSD where you want to install the system. Let's assume it's name is "System".
