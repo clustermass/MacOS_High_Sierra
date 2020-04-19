@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="js" lang="de-DE"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://blog.centurio.net/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="http://blog.centurio.net/wp-content/themes/twentyfifteen/js/html5.js?ver=3.7.0"></script>
+	<![endif]-->
+	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>How to clean install Mac OS High Sierra without APFS on internal SSD – Centurios Blog</title>
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link href="https://fonts.gstatic.com/" crossorigin="" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="Centurios Blog » Feed" href="http://blog.centurio.net/feed/">
+<link rel="alternate" type="application/rss+xml" title="Centurios Blog » Kommentar-Feed" href="http://blog.centurio.net/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Centurios Blog » How to clean install Mac OS High Sierra without APFS on internal SSD Kommentar-Feed" href="http://blog.centurio.net/2018/05/01/how-to-clean-install-mac-os-high-sierra-without-apfs-on-internal-ssd/feed/">
+<link rel="stylesheet" id="crayon-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/crayon.css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/style_002.css" media="all">
+<link rel="stylesheet" id="wp-block-library-theme-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/theme.css" media="all">
+<link rel="stylesheet" id="cntctfrm_form_style-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/form_style.css" media="all">
+<link rel="stylesheet" id="fancybox-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/fancybox.css" media="all">
+<link rel="stylesheet" id="responsive-lightbox-swipebox-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/swipebox.css" media="all">
+<link rel="stylesheet" id="parent-style-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/style_004.css" media="all">
+<link rel="stylesheet" id="child-style-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/style.css" media="all">
+<link rel="stylesheet" id="twentyfifteen-fonts-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/css.css" media="all">
+<link rel="stylesheet" id="genericons-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/genericons.css" media="all">
+<link rel="stylesheet" id="twentyfifteen-style-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/style_003.css" media="all">
+<link rel="stylesheet" id="twentyfifteen-block-style-css" href="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/blocks.css" media="all">
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfifteen-ie-css'  href='http://blog.centurio.net/wp-content/themes/twentyfifteen/css/ie.css?ver=20170916' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentyfifteen-ie7-css'  href='http://blog.centurio.net/wp-content/themes/twentyfifteen/css/ie7.css?ver=20141210' media='all' />
+<![endif]-->
+<script src="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/jquery_003.js"></script>
+<script src="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/jquery-migrate.js"></script>
+<script>
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/blog.centurio.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Dr\u00fccken Sie %s zum Kopieren, %s zum Einf\u00fcgen","minimize":"Klicken um Code aufzuklappen"};
+</script>
+<script src="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/crayon.js"></script>
+<script src="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/jquery.js"></script>
+<script src="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/jquery_002.js"></script>
+<script src="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/infinite-scroll.js"></script>
+<script>
+var rlArgs = {"script":"swipebox","selector":"lightbox","customEvents":"","activeGalleries":"1","animation":"1","hideCloseButtonOnMobile":"0","removeBarsOnMobile":"0","hideBars":"1","hideBarsDelay":"5000","videoMaxWidth":"1080","useSVG":"1","loopAtEnd":"0","woocommerce_gallery":"0","ajaxurl":"http:\/\/blog.centurio.net\/wp-admin\/admin-ajax.php","nonce":"1710ddd485"};
+</script>
+<script src="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/front.js"></script>
+<link rel="https://api.w.org/" href="http://blog.centurio.net/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.centurio.net/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.centurio.net/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="DIY HomeKit with Raspberry Pi and Xiaomi Robot Vacuum" href="http://blog.centurio.net/2018/03/08/diy-homekit-with-raspberry-pi-and-xiaomi-robot-vacuum/">
+<link rel="next" title="Howto convert a Windows 10 installation from legacy BIOS to UEFI boot" href="http://blog.centurio.net/2018/05/17/howto-convert-a-windows-10-installation-from-legacy-bios-to-uefi-boot/">
+<meta name="generator" content="WordPress 5.4">
+<link rel="canonical" href="http://blog.centurio.net/2018/05/01/how-to-clean-install-mac-os-high-sierra-without-apfs-on-internal-ssd/">
+<link rel="shortlink" href="http://blog.centurio.net/?p=3171">
+<link rel="alternate" type="application/json+oembed" href="http://blog.centurio.net/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.centurio.net%2F2018%2F05%2F01%2Fhow-to-clean-install-mac-os-high-sierra-without-apfs-on-internal-ssd%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://blog.centurio.net/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.centurio.net%2F2018%2F05%2F01%2Fhow-to-clean-install-mac-os-high-sierra-without-apfs-on-internal-ssd%2F&amp;format=xml">
+
+<!-- Fancybox for WordPress v3.2.6 -->
+<style type="text/css">
+	.fancybox-slide--image .fancybox-content{background-color: #FFFFFF}div.fancybox-caption{display:none !important;}
+	
+	img.fancybox-image{border-width:10px;border-color:#FFFFFF;border-style:solid;height:auto;}
+	div.fancybox-bg{background-color:rgba(102,102,102,0.3);opacity:1 !important;}div.fancybox-content{border-color:#FFFFFF}
+	div#fancybox-title{background-color:#FFFFFF}
+	div.fancybox-content{background-color:#FFFFFF}
+	div#fancybox-title-inside{color:#333333}
+	
+	
+	
+	div.fancybox-caption p.caption-title{display:inline-block}
+	div.fancybox-caption p.caption-title{font-size:14px}
+	div.fancybox-caption p.caption-title{color:#333333}
+	div.fancybox-caption {color:#333333}div.fancybox-caption p.caption-title {background:#fff; width:auto;padding:10px 30px;}div.fancybox-content p.caption-title{color:#333333;margin: 0;padding: 5px 0;}
+</style><script type="text/javascript">
+	jQuery(function(){
+
+		jQuery.fn.getTitle = function() { // Copy the title of every IMG tag and add it to its parent A so that fancybox can show titles
+			var arr = jQuery("a[data-fancybox]");
+									jQuery.each(arr, function() {
+										var title = jQuery(this).children("img").attr("title");
+										 var caption = jQuery(this).next("figcaption").html();
+                                        if(caption && title){jQuery(this).attr("title",title+" " + caption)}else if(title){ jQuery(this).attr("title",title);}else if(caption){jQuery(this).attr("title",caption);}
+									});			}
+
+		// Supported file extensions
+
+                var thumbnails = jQuery("a:has(img)").not(".nolightbox").not('.envira-gallery-link').not('.ngg-simplelightbox').filter(function () {
+            return /\.(jpe?g|png|gif|mp4|webp|bmp|pdf)(\?[^/]*)*$/i.test(jQuery(this).attr('href'))
+        });
+        
+
+		// Add data-type iframe for links that are not images or videos.
+        var iframeLinks = jQuery('.fancyboxforwp').filter( function() { return ! /\.(jpe?g|png|gif|mp4|webp|bmp|pdf)(\?[^/]*)*$/i.test(jQuery(this).attr('href')) }).filter( function() { return ! /vimeo|youtube/i.test(jQuery(this).attr('href')) });
+        iframeLinks.attr({ "data-type" : "iframe" }).getTitle();
+
+				// Gallery All
+		thumbnails.addClass("fancyboxforwp").attr("data-fancybox","gallery").getTitle();
+        iframeLinks.attr({ "data-fancybox":"gallery" }).getTitle();
+
+		// Gallery type NONE
+		
+
+
+		// Call fancybox and apply it on any link with a rel atribute that starts with "fancybox", with the options set on the admin panel
+		jQuery("a.fancyboxforwp").fancyboxforwp({
+			loop: false,
+			smallBtn: false,
+			zoomOpacity: "auto",
+			animationEffect: "fade",
+			animationDuration: 500,
+			transitionEffect: "fade",
+			transitionDuration : "300",
+			overlayShow: true,
+			overlayOpacity: "0.3",
+			titleShow: true,
+			titlePosition: "inside",
+			keyboard: true,
+			showCloseButton: false,
+			arrows: true,
+			clickContent: false,
+            clickSlide: "close",
+            mobile:{
+                clickContent: function(current, event) {
+                    return current.type === "image" ? "toggleControls" : false;
+                },
+                clickSlide: function(current, event) {
+                    return current.type === "image" ? "close" : "close";
+                },
+            },
+			wheel: false,
+			toolbar: true,
+			preventCaptionOverlap: true,
+			onInit: function() { },			onDeactivate: function() { },			beforeClose: function() { },			afterShow: function() { },			afterClose: function() { },			caption : function( instance, item ) {var testing = jQuery(this).context.title;var caption = jQuery(this).data('caption') || '';if ( item.type === 'image' && testing.length ) {caption = (caption.length ? caption + '<br />' : '') + '<p class="caption-title">'+testing+'</p>' ;}return caption;},
+			afterLoad : function( instance, current ) {current.$content.append('<div class=\"fancybox-custom-caption inside-caption\" style=\" position: absolute;left:0;right:0;color:#000;margin:0 auto;bottom:0;text-align:center;background-color:#FFFFFF \">' + current.opts.caption + '</div>');},
+					});
+		/* Extra Calls */
+	})
+</script>
+<!-- END Fancybox for WordPress -->
+<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style></head>
+
+<body class="post-template-default single single-post postid-3171 single-format-standard wp-embed-responsive">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Springe zum Inhalt</a>
+
+	<div id="sidebar" class="sidebar" style="position: relative;">
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-branding">
+										<p class="site-title"><a href="http://blog.centurio.net/" rel="home">Centurios Blog</a></p>
+												<p class="site-description">Macs, Linux, IoT and Photography</p>
+										<button class="secondary-toggle">Menü und Widgets</button>
+			</div><!-- .site-branding -->
+		</header><!-- .site-header -->
+
+			<div id="secondary" class="secondary">
+
+					<nav id="site-navigation" class="main-navigation" role="navigation">
+				<div class="menu-menue-1-container"><ul id="menu-menue-1" class="nav-menu"><li id="menu-item-2098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2098"><a href="http://blog.centurio.net/">Startseite</a></li>
+<li id="menu-item-2358" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2358"><a href="http://blog.centurio.net/dji-mavic-pro/">DJI Mavic Pro</a></li>
+<li id="menu-item-2100" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2100"><a href="http://blog.centurio.net/cat/apple/">Apple</a></li>
+<li id="menu-item-2189" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2189"><a href="http://blog.centurio.net/cat/android/">Android</a></li>
+<li id="menu-item-2206" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2206"><a href="http://blog.centurio.net/cat/windows-phone/">Windows Phone</a></li>
+<li id="menu-item-2204" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2204"><a href="http://blog.centurio.net/cat/raspberry-pi/">Raspberry Pi</a></li>
+<li id="menu-item-2198" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2198"><a href="http://blog.centurio.net/cat/security/">Security</a></li>
+<li id="menu-item-2199" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2199"><a href="http://blog.centurio.net/cat/linux/">Linux</a></li>
+<li id="menu-item-2201" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2201"><a href="http://blog.centurio.net/cat/windows/">Windows</a></li>
+<li id="menu-item-2203" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2203"><a href="http://blog.centurio.net/cat/hardware/">Hardware</a></li>
+<li id="menu-item-2205" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2205"><a href="http://blog.centurio.net/cat/security/">Security</a></li>
+<li id="menu-item-2099" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2099"><a href="http://blog.centurio.net/about/">Impressum</a></li>
+<li id="menu-item-3181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-3181"><a href="http://blog.centurio.net/datenschutzerklaerung/">Datenschutzerklärung</a></li>
+</ul></div>			</nav><!-- .main-navigation -->
+		
+		
+					<div id="widget-area" class="widget-area" role="complementary">
+				<aside id="search-3" class="widget widget_search"><form role="search" method="get" class="search-form" action="http://blog.centurio.net/">
+				<label>
+					<span class="screen-reader-text">Suche nach:</span>
+					<input type="search" class="search-field" placeholder="Suche&nbsp;…" name="s">
+				</label>
+				<input type="submit" class="search-submit screen-reader-text" value="Suche">
+			</form></aside>		<aside id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widget-title">Recent Posts</h2>		<ul>
+											<li>
+					<a href="http://blog.centurio.net/2019/12/16/configure-mosquitto-mqtt-broker-user-authentication-in-docker-running-on-synology-nas/">Configure Mosquitto mqtt broker  user authentication in Docker running on Synology NAS</a>
+									</li>
+											<li>
+					<a href="http://blog.centurio.net/2019/11/21/creating-a-backup-of-an-existing-openhab-installation/">Creating a backup of an existing OpenHAB installation</a>
+									</li>
+											<li>
+					<a href="http://blog.centurio.net/2019/10/20/howto-control-a-xiaomi-robot-vacuum-without-app-using-valetudo/">Howto control a Xiaomi Robot Vacuum without app using Valetudo</a>
+									</li>
+											<li>
+					<a href="http://blog.centurio.net/2019/10/16/disable-macos-catalina-update-notification-in-mojave/">Disable macOS Catalina update notification in Mojave</a>
+									</li>
+											<li>
+					<a href="http://blog.centurio.net/2019/05/15/monitor-fritzbox-connection-statistics-with-grafana-influxdb-and-raspberry-pi/">Monitor Fritz!Box connection statistics with Grafana, InfluxDB and Raspberry Pi</a>
+									</li>
+					</ul>
+		</aside><aside id="meta-2" class="widget widget_meta"><h2 class="widget-title">Meta</h2>			<ul>
+						<li><a href="http://blog.centurio.net/wp-login.php">Anmelden</a></li>
+			<li><a href="http://blog.centurio.net/feed/">Feed der Einträge</a></li>
+			<li><a href="http://blog.centurio.net/comments/feed/">Kommentare-Feed</a></li>
+			<li><a href="https://de.wordpress.org/">WordPress.org</a></li>			</ul>
+			</aside>			</div><!-- .widget-area -->
+		
+	</div><!-- .secondary -->
+
+	</div><!-- .sidebar -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+<article id="post-3171" class="post-3171 post type-post status-publish format-standard hentry category-allgemeines">
+	
+	<header class="entry-header">
+		<h1 class="entry-title">How to clean install Mac OS High Sierra without APFS on internal SSD</h1>	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>Did you ever wonder how you can make a clean install on your Mac with High Sierra <a href="http://osxdaily.com/2017/10/17/how-skip-apfs-macos-high-sierra/">without being forced to use APFS</a>? Well, I just reinstalled my mac using this method and want to explain how I acomplished this:</p>
+<p>First of all, you’ll need to boot from a Mac OS Version below 10.13 
+High Sierra. Otherwise you’ll get an error message „Helpertool crashed“.
+ So in my case I booted from a 10.12 Sierra USB stick.</p>
+<p>You can now use the Disk Utility of the recovery OS you currently 
+booted from to clean you complete disk. Format the volume HFS+ journaled
+ and choose a simple name without spaces like „internal“ (which I used 
+for my internal SSD). Attach the USB stick which contains the High 
+Sierra installer. You can create this installer following <a href="https://support.apple.com/en-us/HT201372">these instructions</a>.</p>
+<p>Now exit Disk Utility and open a Terminal. Go to the Volume of your attached High Sierra USB Stick.</p>
+<p>cd /Volumes/“Install macOS High Sierra“</p>
+<p>Start the installation of High Sierra to the freshly formatted HFS+ 
+volume mounted as „internal“. This clean installation will also create 
+the Recovery HD partition.</p>
+<p>„Install macOS High Sierra.app“/Contents/Resources/startOsInstall –agreetolicense –converttoapfs NO –volume /Volumes/internal</p>
+<p>More information can be found <a href="https://www.tonymacx86.com/threads/guide-avoid-apfs-conversion-on-high-sierra-update-or-fresh-install.232855/">here</a>. A video of the process and more details are <a href="https://derflounder.wordpress.com/2017/09/26/using-the-macos-high-sierra-os-installers-startosinstall-tool-to-avoid-apfs-conversion/">here</a>. If you execute the startOsInstall command with –usage you’ll get a <a href="https://apple.stackexchange.com/questions/299726/how-to-prevent-conversion-to-apfs-on-high-sierra-install">list of available parameters</a>.</p>
+<p>&nbsp;</p>
+	</div><!-- .entry-content -->
+
+	
+	<footer class="entry-footer">
+		<span class="posted-on"><span class="screen-reader-text">Veröffentlicht am </span><a href="http://blog.centurio.net/2018/05/01/how-to-clean-install-mac-os-high-sierra-without-apfs-on-internal-ssd/" rel="bookmark"><time class="entry-date published updated" datetime="2018-05-01T12:43:22+02:00">1. Mai 2018</time></a></span><span class="byline"><span class="author vcard"><span class="screen-reader-text">Autor </span><a class="url fn n" href="http://blog.centurio.net/author/admin/">Centurio</a></span></span><span class="cat-links"><span class="screen-reader-text">Kategorien </span><a href="http://blog.centurio.net/cat/allgemeines/" rel="category tag">Allgemeines</a></span>			</footer><!-- .entry-footer -->
+
+</article><!-- #post-3171 -->
+
+	<nav class="navigation post-navigation" role="navigation" aria-label="Beiträge">
+		<h2 class="screen-reader-text">Beitrags-Navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="http://blog.centurio.net/2018/03/08/diy-homekit-with-raspberry-pi-and-xiaomi-robot-vacuum/" rel="prev"><span class="meta-nav" aria-hidden="true">Zurück</span> <span class="screen-reader-text">Vorheriger Beitrag:</span> <span class="post-title">DIY HomeKit with Raspberry Pi and Xiaomi Robot Vacuum</span></a></div><div class="nav-next"><a href="http://blog.centurio.net/2018/05/17/howto-convert-a-windows-10-installation-from-legacy-bios-to-uefi-boot/" rel="next"><span class="meta-nav" aria-hidden="true">Weiter</span> <span class="screen-reader-text">Nächster Beitrag:</span> <span class="post-title">Howto convert a Windows 10 installation from legacy BIOS to UEFI boot</span></a></div></div>
+	</nav>
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
+
+	</div><!-- .site-content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a class="privacy-policy-link" href="http://blog.centurio.net/datenschutzerklaerung/">Datenschutzerklärung</a><span role="separator" aria-hidden="true"></span>			<a href="https://de.wordpress.org/" class="imprint">
+				Stolz präsentiert von WordPress			</a>
+		</div><!-- .site-info -->
+	</footer><!-- .site-footer -->
+
+</div><!-- .site -->
+
+<script src="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/skip-link-focus-fix.js"></script>
+<script>
+var screenReaderText = {"expand":"<span class=\"screen-reader-text\">Untermen\u00fc anzeigen<\/span>","collapse":"<span class=\"screen-reader-text\">Untermen\u00fc verbergen<\/span>"};
+</script>
+<script src="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/functions.js"></script>
+<script src="How%20to%20clean%20install%20Mac%20OS%20High%20Sierra%20without%20APFS%20on%20internal%20SSD%20%E2%80%93%20Centurios%20Blog_files/wp-embed.js"></script>
+
+
+
+</body></html>

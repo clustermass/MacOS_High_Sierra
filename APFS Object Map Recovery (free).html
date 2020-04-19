@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>APFS Object Map Recovery (free)</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="alternate" type="application/rss+xml" title="matt.sh feed (titles only)" href="https://matt.sh/.rss"><link rel="stylesheet" href="APFS%20Object%20Map%20Recovery%20(free)_files/style.css" type="text/css" media="screen"><script type="text/javascript">var require={baseUrl:'/',urlArgs:"z"};</script><script src="APFS%20Object%20Map%20Recovery%20(free)_files/js" type="text/javascript" data-main="js/matt/main"></script><meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body><div class="container"><div class="row"><div class="col-lg-8 col-lg-push-2"><div class="row"><div class="col-lg-12"><p></p><section id="individualArticle">
+  <article id="apfs-object-map-free-recovery" class="panel panel-info">
+   <header class="panel-heading">
+    <a href="https://matt.sh/apfs-object-map-free-recovery" class="panel-title">APFS Object Map Recovery (free)</a>
+   </header>
+  <div class="panel-body">
+    <h1 id="_apfs-object-map-recovery">APFS Object Map Recovery</h1>
+<p>I spent a day figuring out how to look into a corrupt encrypted APFS partition. Here’s the notes.</p>
+<p>If you only care about the answer, jump to the last section.</p>
+<h2 id="_kernel-panic">Kernel Panic</h2>
+<p>macOS hard panicked on me me with our favorite graphics driver common interface corruption <a href="https://objective-see.com/blog/blog_0x27.html">com.apple.iokit.IOAcceleratorFamily2</a> which happened after seven “gpuRestart” logs were generated back-to-back.</p>
+<p>After the reboot and a login, the system crashed again while applications were starting up. Not good.</p>
+<p>After the next reboot, the system started okay, but since 
+applications crashed while starting, they lost all of their historical 
+state. Chrome lost all open windows and tabs. Terminal lost all open 
+windows and tabs. Drat.</p>
+<p>So, off to backups to restore Chrome windows/tabs and Terminal windows/tabs from old saved states.</p>
+<p>Now with windows restored to how they looked two weeks ago, let’s see what else went wrong during a double crashing reboot.</p>
+<h2 id="_no-drive">No Drive</h2>
+<p>I launched VLC to watch something from my media drive and… my 2 TB USB drive wasn’t mounted.</p>
+<p>No problem, just hop into Disk Utility and mount it.</p>
+<p>Except—this looks odd.</p>
+<div class="row">
+<div class="col-12">
+<p><img src="APFS%20Object%20Map%20Recovery%20(free)_files/diskutility.png" style="width:100%"></p>
+</div>
+</div>
+<p>Odd and wrong. <em>Uninitialized</em>? I’m not uninitialized, you’re uninitialized! Odd and wrong and ohcrapwhereismydrive.</p>
+<p>It’s not the end of the world (the drive is just downloaded media), but I <a href="https://matt.sh/files/apfs/dmcaaaa.txt">worked hard</a> for these files and I’d rather not lose them.</p>
+<h2 id="_no-data">No Data</h2>
+<p>Let’s click <code>First Aid</code> on <code>AppleAPFSMedia</code> (which is <code>/dev/disk3</code>):</p>
+<div class="sourceCode" id="_cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="ex">Running</span> First Aid on “AppleAPFSMedia” (disk3)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="ex">Fixing</span> damaged partition map.</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="ex">Invalid</span> disk.</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="ex">Operation</span> failed…</a></code></pre></div>
+<p>No bueno.</p>
+<h2 id="_no-fsck">No <code>fsck</code></h2>
+<p>What if we try <code>First Aid</code> on <code>APFS Physical Store disk2s2</code> instead?</p>
+<div class="sourceCode" id="_cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dt">Running</span> <span class="dt">First</span> <span class="dt">Aid</span> on “” (disk2s2)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="dt">Repairing</span> storage system</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="dt">Performing</span> fsck_apfs <span class="fu">-</span>y <span class="fu">-</span>x <span class="fu">/</span>dev<span class="fu">/</span>disk2s2</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="dt">Checking</span> the container superblock<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="dt">Checking</span> the space manager<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="dt">Checking</span> the space manager free queue trees<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="dt">Checking</span> the object map<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="dt">Checking</span> volume<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="dt">Checking</span> the <span class="dt">APFS</span> volume superblock<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="dt">The</span> volume <span class="dt">Blue</span> <span class="dt">Diamond</span> was formatted by diskmanagementd (<span class="fl">945.230</span><span class="fu">.</span><span class="dv">6</span>) and last modified by apfs_kext (<span class="fl">945.275</span><span class="fu">.</span><span class="dv">7</span>)<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="dt">Checking</span> the object map<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">error<span class="fu">:</span> om<span class="fu">:</span> btn<span class="fu">:</span> invalid o_oid (<span class="bn">0x233b75</span>)</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="dt">Object</span> map is invalid<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="dt">The</span> volume <span class="fu">/</span>dev<span class="fu">/</span>disk2s2 could not be verified completely<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="dt">Storage</span> system check exit code is <span class="dv">8</span><span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="dt">Storage</span> system verify or repair failed<span class="fu">.</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="dt">Operation</span> failed…</a></code></pre></div>
+<p>Even though <code>fsck_apfs</code> can see the volume name now, our overall feeling is still no no no no no no</p>
+<h2 id="_no-diskutil-info">No <code>diskutil info</code></h2>
+<p>What does <code>diskutil apfs list</code> think?</p>
+<div class="sourceCode" id="_cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">APFS</span> Containers (2 found)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="ex">+--</span> <span class="op">&lt;</span>ignoring system drive here<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="ex">+--</span> Container ERROR -69808</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">    ======================</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">    <span class="ex">APFS</span> Container Reference:     disk3</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">    <span class="ex">Size</span> (Capacity Ceiling)<span class="bu">:</span>      ERROR -69620</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="ex">Capacity</span> In Use By Volumes:   ERROR -69620</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="ex">Capacity</span> Not Allocated:       ERROR -69620</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">    <span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">    <span class="ex">+-</span><span class="op">&lt;</span> Physical Store disk2s2</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">    <span class="kw">|</span>   <span class="ex">-----------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">    <span class="kw">|</span>   <span class="ex">APFS</span> Physical Store Disk:   disk2s2</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">    <span class="kw">|</span>   <span class="ex">Size</span>:                       2000189177856 B (2.0 TB)</a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">    <span class="kw">|</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">    <span class="ex">+-</span><span class="op">&gt;</span> No Volumes</a></code></pre></div>
+<p>things are looking pretty awful</p>
+<p>Apparently, in 2019, Apple has a file system corruptible by crash 
+reboots and also can’t be repaired by their own tools. Everything is 
+fine.</p>
+<h2 id="_a-data-recovery-tool-appears">A data recovery tool appears</h2>
+<p>Searching online for recovering from APFS <code>Object map is invalid</code> errors brings us to a site called “iboysoft” which is a utility with <a href="https://iboysoft.com/mac-data-recovery/apfs-object-map-is-invalid.html">pretty good marketing SEO</a> for file system problems.</p>
+<p>Of course each fix of theirs is “our software fixes it! Pay us $99 to recover your data!”</p>
+<p>My only only option now is to download a utility called “iboysoft” 
+from an anonymous Chinese company with promises it can recover 
+unreadable APFS partitions.</p>
+<p>So we download.</p>
+<p>And we run.</p>
+<p>And… it shows me all files on the drive! Thanks, “iboysoft,” and shame on you, Apple.</p>
+<p>Of course, it only shows you file names and file previews in trial mode. Actually restoring files costs $99.</p>
+<p>Before I throw away $99 to recover within-arms-reach files, I do some
+ more searching… either the people behind this utility reverse 
+engineered APFS from half complete docs Apple provides or they are using
+ other public code underneath (spoiler: I never found out if the utility
+ was all custom code or reusing open source code just packaged in a UI<a href="#_fn1" class="footnote-ref" id="_fnref1"><sup>1</sup></a>).</p>
+<h2 id="_but-what-about-github">but what about GitHub?</h2>
+<p>What about APFS recovery tools lurking around on GitHub? If a random 
+anonymous online app can fix my drive, what about public utilities?</p>
+<h2 id="_a-read-only-apfs-info-util">A read-only apfs info util</h2>
+<p>First, we found <a href="https://github.com/jivanpal/apfs-tools">apfs-tools</a> (via <a href="https://apple.stackexchange.com/questions/370602/accessing-unmountable-apfs-volume-on-a-disk-image">Apple SE: Accessing unmountable APFS Volume on a disk image</a>)
+ currently being maintained/created/updated with a hand written APFS 
+parser — but, it won’t open my encrypted APFS volume, and Apple’s own 
+tools won’t provide a decrypted volume view because <code>diskutil apfs unlockVolume</code> doesn’t recognize the broken APFS volume or drive at all.</p>
+<p>A swing and a miss.</p>
+<h2 id="_a-full-apfs-library">A full apfs library</h2>
+<p>Next up, we find a thing called <a href="https://github.com/libyal/libfsapfs">libfsapfs</a>
+ currently being maintained/created/updated with a different hand 
+written APFS parser, and this one includes support for reading encrypted
+ volumes!</p>
+<p>Also it looks like <code>libfsapfs</code> includes some binary utilities so we won’t have to interface with the library directly for quick tests.</p>
+<p>Let’s compile it from a <a href="https://github.com/libyal/libfsapfs/releases">release</a>:</p>
+<div class="sourceCode" id="_cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="va">CC=</span><span class="st">"xcrun gcc"</span> <span class="ex">./configure</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="fu">make</span> -j12</a></code></pre></div>
+<p><code>libfsapfs</code> includes binaries, but we don’t know where they are or where they got built.</p>
+<p>Let’s search:</p>
+<div class="sourceCode" id="_cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="op">&gt;</span> <span class="fu">find</span> . -type f -perm 0755</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="ex">./fsapfstools/fsapfsmount</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="ex">./fsapfstools/fsapfsinfo</span></a></code></pre></div>
+<p>Those look useful!</p>
+<p>Running <code>./fsapfsinfo</code> gives us help of:</p>
+<div class="sourceCode" id="_cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="ex">fsapfsinfo</span> 20191104</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="ex">Missing</span> source file or device.</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="ex">Use</span> fsapfsinfo to determine information about an Apple</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"> <span class="ex">File</span> System (APFS)<span class="ex">.</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="ex">Usage</span>: fsapfsinfo [ -B bodyfile ] [ -E identifier ]</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">                  [ <span class="ex">-f</span> file_system_index ] [ -F path ]</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">                  [ <span class="ex">-o</span> offset ] [ -p password ]</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">                  [ <span class="ex">-r</span> password ] [ -hHvV ] source</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">    <span class="ex">source</span>: the source file or device</a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">    <span class="ex">-B</span>:     output file system information as a bodyfile</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">    <span class="ex">-E</span>:     show information about a specific file system entry or <span class="st">"all"</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">    <span class="ex">-f</span>:     show information about a specific file system or <span class="st">"all"</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">    <span class="ex">-F</span>:     show information about a specific file entry path</a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">    <span class="ex">-h</span>:     shows this help</a>
+<a class="sourceLine" id="cb6-19" data-line-number="19">    <span class="ex">-H</span>:     shows the file system hierarchy</a>
+<a class="sourceLine" id="cb6-20" data-line-number="20">    <span class="ex">-o</span>:     specify the volume offset</a>
+<a class="sourceLine" id="cb6-21" data-line-number="21">    <span class="ex">-p</span>:     specify the password</a>
+<a class="sourceLine" id="cb6-22" data-line-number="22">    <span class="ex">-r</span>:     specify the recovery password</a>
+<a class="sourceLine" id="cb6-23" data-line-number="23">    <span class="ex">-v</span>:     verbose output to stderr</a>
+<a class="sourceLine" id="cb6-24" data-line-number="24">    <span class="ex">-V</span>:     print version</a></code></pre></div>
+<p>oh look, it has a simple <code>-p</code> option to enter the password of an encrypted volume!</p>
+<p>and we can use <code>-H</code> to print a list of everything it can 
+see on the filesystem, which, when we run it, ends up being the same 
+list of files discovered by the “iboysoft” recovery utility from before:</p>
+<div class="sourceCode" id="_cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="ex">./fsapfsinfo</span> -p <span class="op">&lt;</span>passphrase<span class="op">&gt;</span> -H /dev/disk3</a></code></pre></div>
+<p>It looks like we may be able to avoid paying $99 to recover files from our corrupted APFS volume after all.</p>
+<h2 id="_recovering-apfs-volume-using-libfsapfs">Recovering APFS Volume using <code>libfsapfs</code></h2>
+<p>The other command is <code>fsapfsmount</code> which seems like our goal. All we really need is to mount our system-unreadable volume so we can copy the files somewhere safe.</p>
+<p>Let’s try to mount. The mount command follows normal syntax with the mount point being the last argument.</p>
+<div class="sourceCode" id="_cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="op">&gt;</span> <span class="fu">mkdir</span> got</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="op">&gt;</span> <span class="ex">./fsapfsmount</span> -p <span class="op">&lt;</span>passphrase<span class="op">&gt;</span> -v /dev/disk3 got</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="ex">fsapfsmount</span> 20191104</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="ex">mount_osxfuse</span>: the file system is not available (1)</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="ex">Unable</span> to create fuse channel.</a></code></pre></div>
+<p>Not available? File system not available? Oh, <code>osxfuse</code> not available. We probably didn’t have mac fuse installed. Let’s fix with:</p>
+<div class="sourceCode" id="_cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="ex">brew</span> cask install osxfuse</a></code></pre></div>
+<p>But now we also have to rebuild <code>libfsapfs</code> so it can pick up fuse:</p>
+<div class="sourceCode" id="_cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="op">&lt;</span><span class="ex">back</span> to the project root<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="va">CC=</span><span class="st">"xcrun gcc"</span> <span class="ex">./configure</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="fu">make</span> -j12</a></code></pre></div>
+<p>Now let’s try the mount again! (you will get a macOS system extension
+ error where you need to manually approve the fuse extension in System 
+Preferences, so do the approval dance then continue from here…)</p>
+<div class="sourceCode" id="_cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="op">&gt;</span> <span class="ex">./fsapfsmount</span> -p <span class="op">&lt;</span>passphrase<span class="op">&gt;</span> -v /dev/disk3 got</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="ex">fsapfsmount</span> 20191104</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="ex">volicon</span>: missing <span class="st">'iconpath'</span> option</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="ex">Unable</span> to create fuse handle.</a></code></pre></div>
+<p>What’s an <code>iconpath</code> and why do we care?</p>
+<p>Back to google… (in reality we tried to mount another couple times, rebooted, <em>then</em> asked google)</p>
+<p>We get an <a href="https://github.com/libyal/libewf/issues/117">unrelated project issue</a>
+ declaring mac fuse requires a path to an icon library to show disks or 
+else it won’t mount anything. sure, why not. remember: defaults matter. 
+Don’t make users search for weird things when the default could just 
+work hardcoded (obviously you need an icon repository to mount your 
+disk, right?).</p>
+<p>Back we go to mounting, but we may need to clean up the previous failed mount first.</p>
+<p>The previous failed mount <em>did</em> (oddly) use the mount point even though it didn’t mount anything. Let’s free the directory.</p>
+<div class="sourceCode" id="_cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="op">&gt;</span> <span class="fu">umount</span> got</a></code></pre></div>
+<p>Now try again (the same command as before, but now with <code>-X volicon=/Library/Filesystems/osxfuse.fs/Contents/Resources/Volume.icns</code>):</p>
+<div class="sourceCode" id="_cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="op">&gt;</span> <span class="ex">./fsapfsmount</span> -p <span class="op">&lt;</span>passphrase<span class="op">&gt;</span> -X volicon=/Library/Filesystems/osxfuse.fs/Contents/Resources/Volume.icns /dev/disk3 got</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="ex">fsapfsmount</span> 20191104</a></code></pre></div>
+<p>And it worked! At least it worked for me.</p>
+<p>We can <code>ls got</code> and… there are all our files! We didn’t 
+have to pay a weird company named “iboysoft” $99 to recover files Apple 
+corrupted away from us. We just had to pay whatever our time was worth 
+for the 5 hours it took to track down all of these solutions.</p>
+<p>Now just <code>rsync -av --progress --partial got/* /Volumes/NewDrive/</code>
+ for about 20 hours. After a mostly complete transfer (you may have some
+ data errors, but rsync will skip over them to continue), you can 
+reformat your corrupt drive as <strong>not</strong> APFS because APFS 
+shouldn’t be used on external spinning rust drives at all, as we’ve seen
+ through this entire mess. It’s okay though, we didn’t have anything 
+else better to do today than babysit poorly written OS-provided system 
+utilities and sleuth the Internet neck deep in error reports for half a 
+dozen manual workarounds.</p>
+<p>Enjoy.</p>
+<p>-<a href="mailto:matt@matt.sh">Matt</a> — <a href="https://twitter.com/mattsta">@mattsta</a> — <a href="https://github.com/mattsta">☁mattsta</a> —&nbsp;<a href="https://onlycoders.net/mattsta" class="uri">https://onlycoders.net/mattsta</a></p>
+<section class="footnotes">
+<hr>
+<ol>
+<li id="_fn1"><p>but after this article, <em>you</em> could package open
+ source code in a cheap UI and charge $50 for APFS corruption recovery 
+instead of everybody else’s price of $99. It would be a good deal.<a href="#_fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+
+  </div>
+  
+  </article>
+</section>
+</div></div></div><div class="col-lg-2 col-lg-pull-8"><!-- <div class="panel panel-primary"><header class="panel-heading navcol">in progress</header><div class="list-group"></div></div> -->
+<!--<div><div class="panel panel-primary"><header class="panel-heading navcol"><a href="/books">series</a></header><div class="list-group"><a href="/swift-types" class="list-group-item">swift: power of types</a></div><div class="list-group"><a href="/travel" class="list-group-item">quit job, do travel</a></div></div></div>-->
+<p></p><div class="panel panel-primary"><header class="panel-heading navcol">personal</header><div class="list-group"><a href="https://matt.sh/code" class="list-group-item">my code</a><a href="https://matt.sh/startup-books-a-rage-review" class="list-group-item">startups: rage review</a><a href="https://matt.sh/anatomy-of-a-fraud" class="list-group-item">fraud, a guide to</a><a href="https://matt.sh/howto-c" class="list-group-item">howto c (2016)</a><a href="https://matt.sh/sytycc" class="list-group-item">think you can const?</a><a href="https://matt.sh/security-rules-for-email" class="list-group-item">email security rules</a><a href="https://matt.sh/disrupt-tech-interviews" class="list-group-item">disrupt interviews</a><a href="https://matt.sh/programmer-street" class="list-group-item">programmer street</a><a href="https://matt.sh/kosh" class="list-group-item">kosh</a><a href="https://matt.sh/about" class="list-group-item">about</a><a href="https://matt.sh/apps" class="list-group-item">iOS apps</a><a href="https://matt.sh/heroin" class="list-group-item">heroin docs</a><a href="https://matt.sh/matt-curve" class="list-group-item">the matt curve</a><a href="https://matt.sh/.rss" class="list-group-item">RSS</a></div></div> <div class="panel panel-primary"><header class="panel-heading navcol">future</header><div class="list-group"><a href="https://matt.sh/searching-2013" class="list-group-item">searching (past)</a><a href="https://matt.sh/programming-errors" class="list-group-item">errors at scale</a><a href="https://matt.sh/to-my-future-employees" class="list-group-item">employees</a></div></div>  <!--<div><div class="panel panel-primary"><header class="panel-heading navcol">redis ready-to-use</header><div class="list-group"><a href="/short-redis-cluster-intro-nov-2013" class="list-group-item">short cluster intro</a></div><div class="list-group"><a href="/dynamic-redis" class="list-group-item">dynamic redis</a></div><div class="list-group"><a href="/redis-geo" class="list-group-item">geo commands</a></div><div class="list-group"><a href="/redis-quicklist-visions" class="list-group-item">quicklist</a></div><div class="list-group"><a href="/redis-crcspeed" class="list-group-item">crcspeed</a></div></div><div class="panel panel-primary"><header class="panel-heading navcol">redis experiments</header><div class="list-group"><a href="/advanced-redis-pubsub-scripts" class="list-group-item">pub/sub scripts</a></div><div class="list-group"><a href="/advanced-redis-command-loading" class="list-group-item">command loading</a></div><div class="list-group"><a href="/redis-json" class="list-group-item">json storage</a></div><div class="list-group"><a href="/redis-benchmark-compilers" class="list-group-item">compare compilers</a></div></div><div class="panel panel-primary"><header class="panel-heading navcol">redis presentations</header><div class="list-group"><a href="/redis-presentation-2013-12" class="list-group-item">Intro to Redis (2013)</a></div></div></div>--><p></p>
+</div></div></div></body></html>

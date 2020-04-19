@@ -1,0 +1,2568 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/linkid.js"></script><script type="text/javascript" async="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/ec.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>How to Revert a drive from APFS back to HFS+</title>
+    <link rel="shortcut icon" href="https://blog.macsales.com/wp-content/themes/RocketYard/favicon.ico">
+    <link href="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/css_002.css" rel="stylesheet" type="text/css">
+    <link href="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/css.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/style.css">
+    <link media="only screen and (max-device-width: 767px)" rel="stylesheet" href="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/style-iphone.css" type="text/css">
+
+
+
+    
+<!-- All in One SEO Pack 3.3.5 by Michael Torbert of Semper Fi Web Design[134,216] -->
+<meta name="description" content="We show you how to revert back to HFS+ from APFS (Apple File System).">
+
+<meta name="keywords" content="apfs,hfs+,revert,storage,disk utility,finder,macos extended journaled,tech tip,tech tips">
+
+<iframe src="javascript:void(0)" title="" style="width: 0px; height: 0px; border: 0px none; display: none;"></iframe><script type="text/javascript" async="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/atrk.js"></script><script type="text/javascript" async="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/ga.js"></script><script type="application/ld+json" class="aioseop-schema">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://blog.macsales.com/#organization","url":"https://blog.macsales.com/","name":"Rocket Yard - The OWC Blog","sameAs":[]},{"@type":"WebSite","@id":"https://blog.macsales.com/#website","url":"https://blog.macsales.com/","name":"Rocket Yard - The OWC Blog","publisher":{"@id":"https://blog.macsales.com/#organization"}},{"@type":"WebPage","@id":"https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#webpage","url":"https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/","inLanguage":"en-US","name":"How to Revert a drive from APFS back to HFS+","isPartOf":{"@id":"https://blog.macsales.com/#website"},"image":{"@type":"ImageObject","@id":"https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#primaryimage","url":"https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458.jpg","width":640,"height":308},"primaryImageOfPage":{"@id":"https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#primaryimage"},"datePublished":"2018-12-19T21:08:50-06:00","dateModified":"2019-10-10T21:20:53-05:00","description":"We show you how to revert back to HFS+ from APFS (Apple File System)."},{"@type":"Article","@id":"https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#article","isPartOf":{"@id":"https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#webpage"},"author":{"@id":"https://blog.macsales.com/author/steve-sande/#author"},"headline":"How to Revert a drive from APFS back to HFS+","datePublished":"2018-12-19T21:08:50-06:00","dateModified":"2019-10-10T21:20:53-05:00","commentCount":"39","mainEntityOfPage":{"@id":"https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#webpage"},"publisher":{"@id":"https://blog.macsales.com/#organization"},"articleSection":"Tech Tips, APFS, Disk Utility, Finder, HFS+, MacOS Extended (Journaled), Tech Tip, Steve Sande","image":{"@type":"ImageObject","@id":"https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#primaryimage","url":"https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458.jpg","width":640,"height":308}},{"@type":"Person","@id":"https://blog.macsales.com/author/steve-sande/#author","name":"Steve Sande","sameAs":[],"image":{"@type":"ImageObject","@id":"https://blog.macsales.com/#personlogo","url":"https://secure.gravatar.com/avatar/06c8988354efb3b7dad0d513cbaf3c8a?s=96&d=mm&r=g","width":96,"height":96,"caption":"Steve Sande"}}]}</script>
+			<script type="text/javascript">
+				window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+				ga('create', 'UA-821146-1', { 'cookieDomain': 'blog.macsales.com','allowLinker': true } );
+				// Plugins
+				ga('require', 'linker');ga('linker:autoLink', ['eshop.macsales.com', 'macsales.com'] );ga('require', 'displayfeatures');ga('require', 'ec');ga('require', 'linkid', 'linkid.js');ga('require', 'outboundLinkTracker');
+				ga('send', 'pageview');
+			</script>
+			<script async="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/analytics.js"></script>
+			<script async="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/autotrack.js"></script>
+				<!-- All in One SEO Pack -->
+<link rel="dns-prefetch" href="https://secure.gravatar.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Rocket Yard - The OWC Blog » Feed" href="https://blog.macsales.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Rocket Yard - The OWC Blog » Comments Feed" href="https://blog.macsales.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Rocket Yard - The OWC Blog » How to Revert a drive from APFS back to HFS+ Comments Feed" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.macsales.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/wp-emoji-release.js" type="text/javascript" defer="defer"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/style_002.css" type="text/css" media="all">
+<style id="wp-block-library-inline-css" type="text/css">
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel="stylesheet" id="social-logos-css" href="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/social-logos.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/jquery.js"></script>
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/picturefill.js"></script>
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/mmenu.js"></script>
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/sidebar.js"></script>
+<link rel="https://api.w.org/" href="https://blog.macsales.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.macsales.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.macsales.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Still Time to Take Advantage of Section 179 Tax Break" href="https://blog.macsales.com/46892-still-time-to-take-advantage-of-section-179-tax-break-3/">
+<link rel="next" title="OWC, MacSales.com Call Center and Live Chat Closed for New Year’s Day" href="https://blog.macsales.com/43248-macsales-com-call-center-live-chat-closed-for-christmas-3/">
+
+<link rel="canonical" href="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/a.html">
+<link rel="shortlink" href="https://wp.me/pmPaT-cco">
+<link rel="alternate" type="application/json+oembed" href="https://blog.macsales.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.macsales.com%2F46896-how-to-revert-a-drive-from-apfs-back-to-hfs%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://blog.macsales.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.macsales.com%2F46896-how-to-revert-a-drive-from-apfs-back-to-hfs%2F&amp;format=xml">
+<meta name="description" content="">
+<!-- <meta name="NextGEN" version="3.2.23" /> -->
+
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Revert a drive from APFS back to HFS+">
+<meta property="og:url" content="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/">
+<meta property="og:description" content="Apple’s new APFS (Apple File System) format is the default format for storage under&nbsp;macOS 10.14 Mojave, replacing the dependable and long-lived HFS+ format. However, there are still some…">
+<meta property="article:published_time" content="2018-12-19T21:08:50+00:00">
+<meta property="article:modified_time" content="2019-10-10T21:20:53+00:00">
+<meta property="og:site_name" content="Rocket Yard - The OWC Blog">
+<meta property="og:image" content="https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458.jpg">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="308">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@macsales">
+<meta name="twitter:text:title" content="How to Revert a drive from APFS back to HFS+">
+<meta name="twitter:image" content="https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458.jpg?w=640">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- End Jetpack Open Graph Tags -->
+		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+
+strong {
+    font-weight: 500 !important;
+}
+
+.wp-caption, .wp-caption-text .figcaption {
+    color: #777;
+	padding: 10px;
+    font-size: .8rem;
+    line-height: 1rem;
+	background: #FAFAFA;
+	border-radius: 5px;
+    margin: 10px;
+    max-width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 22pt;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	font-weight: 500;
+}
+
+
+h2 {
+    font-size: 18pt;
+	margin-top: 1.3em;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	font-weight: 500;
+}
+
+
+h3 {
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-size: 15pt;
+	margin-top: 1.3em;
+	font-weight: 500;
+}
+
+h4 {
+    font-size: 12pt;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	font-weight: 500;
+}
+
+kbd, code {
+	font-family: monospace;
+	font-size: .95em;
+	background-color: #eee;
+}
+
+.content .entry-subtitle, .content .feat-cont-subtitle, .content .recent-cont-subtitle, .content .category-cont-subtitle, .content .search-cont-subtitle, .content .single-content, .subfooter
+{ 
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
+	font-weight: 400; 
+}
+
+.content .entry-title a, .content .feat-cont-title a, .content .recent-cont-title a, .content .category-cont-title a, .content .single-title a, .content .page-title, .content .other-title a, .content .search-title, .content .search-cont-title a
+{ 
+	font-family: 'Titillium Web', Arial, sans-serif; 
+	font-weight: 600;
+	line-height: 120%
+}
+
+.content .comment-title { 
+	font-family: 'Titillium Web', Arial, sans-serif; 
+	color: #993333; 
+	font-size: 30px; 
+	font-style: normal; 
+	text-decoration: none; 
+	margin: 30px 0 20px 0; 
+}
+
+.content .comment-reply-title {
+	color: #993333;
+	font-size: 16px;
+	font-style: italic;
+	text-decoration: none;
+	margin: 30px 0 20px 0;
+	margin-bottom: 50px;
+	margin-top: 30px;
+}
+
+
+.comment-respond {
+	background: #eef8ff;
+	padding: 25px;
+	border-radius: 10px;
+	border: 1px solid #bbb;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+.comment-form textarea {
+	font-size: 13px; 
+	height: 200px; 
+	width: 100%; 
+	-webkit-appearance: none; 
+	border-radius: 0; 
+	border: 1px solid #4c4c4c; 
+}
+
+
+p.logged-in-as { 
+margin-top: -25px;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+ font-size: 16px; font-weight: 700; color: #666666; 
+}
+
+
+div.sharedaddy {
+	margin: 30px 0px 30px 0px; 
+	border-top: .5px solid #bbb;
+	border-bottom: .5px solid #bbb;
+	text-align: center;
+}
+
+div.sharedaddy h3.sd-title {
+	font-size: 17px;
+	font-family: 'Titillium Web', Arial, sans-serif; 
+}
+
+div.sharedaddy h3.sd-title:before {
+    content: "";
+    display: block;
+    width: 100%;
+    min-width: 30px;
+    border-top: 0px solid #ddd;
+    margin-bottom: 1em
+}
+
+.content .comment-meta.commentmetadata a {
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	font-size: 15px; 
+	font-weight: 500; 
+}
+
+.content .comment-text { 
+	display: block; float: left; 
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	font-size: 14px; 
+	font-weight: 400; 
+	line-height: 150%; 
+}
+
+.content .comments a { 
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
+	font-weight: 500;
+}
+
+.content .tag-title {
+	font-family: 'Titillium Web', Arial, sans-serif; 
+	font-weight: 500;
+	font-style: normal;
+}
+
+.content .tag-links, .content .tag-links a {
+	font-family: 'Roboto', Helvetica, Arial, sans-serif; 
+	font-weight: 500;
+	font-style: normal;
+}
+
+.modal .newsletter-title {
+	font-family: 'Titillium Web', Arial, sans-serif; 
+
+}
+
+em {
+	font-style: italic;
+}
+
+.keys {
+border: 1px solid #aaa; 
+-moz-border-radius: 0.2em; 
+-webkit-border-radius: 0.2em; 
+border-radius: 0.2em; 
+-moz-box-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,0.1); 
+-webkit-box-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,0.1); 
+box-shadow: 0.1em 0.1em 0.2em rgba(0,0,0,0.1); background-color: #f9f9f9; 
+background-image: linear-gradient(to bottom, #eee, #f9f9f9, #eee); 
+color: #000; 
+padding: 0.1em 0.3em; 
+font-family: inherit; 
+font-size: 0.85em;
+white-space: nowrap;
+}
+
+.footnote {
+padding: 10px; 
+background: #f9f9f9; 
+font-size: .9em; 
+line-height: 1.3; 
+border: 1px solid #ccc; 
+border-radius: 5px;
+}
+
+.byline {
+margin: 25px;
+padding: 20px; 
+font-weight: 400; 
+font-style: italic;
+border-top: 1px solid #ddd; 
+border-bottom: 1px solid #ddd; 
+border-radius: 5px; 
+background: #fdfdfd;
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 3px solid #aaa;
+  margin: 1.5em 20px 1.5em 20px ;
+  padding: 0.5em 10px;
+}
+
+blockquote p {
+  display: inline;
+}
+
+ol {
+	list-style: decimal;
+	margin-left: 40px;
+	margin-bottom: 20px;
+}
+
+.content .recent-img {height: 216px;}
+
+figcaption {
+	line-height: 1.4em;
+	font-weight: 500;
+	color: #777;
+	font-size: .8rem;
+	border-radius: 5px;
+	margin: 10px; 
+ 	max-width: 100%;
+	text-align: center;
+}
+
+
+.hr100 {
+	width: 100px;
+}
+
+.hr200 {
+	width: 200px;
+}
+
+.size-95em {
+	font-size: .95em !important;
+}
+
+.size-9em {
+	font-size: .9em !important;
+}
+
+.size-1em {
+	font-size: 1em;
+}
+
+.indent-25px {
+  margin: 25px;
+}
+
+.left-right-margins-25px {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.left-right-margins-30px {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.left-right-margins-35px {
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+.left-right-margins-40px {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.columns-2 {
+	columns: 2;
+}
+
+/* Jetpack Subscription */
+
+.jetpack_subscription_widget {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-size: 13px; 
+  line-height: 1.3em;
+  font-weight: 400;
+}
+
+#subscribe-text {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-size: 13px; 
+  line-height: 0em;
+  font-weight: 400;
+}
+
+sup { 
+	  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+font-size: .8em}
+
+.search-results article {
+	display:flex
+}
+		</style>
+		
+<script type="text/javascript">
+
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-821146-2']);
+ _gaq.push(['_trackPageview']);
+
+ (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+
+</script>
+
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"A6ESk1ao6C52io", domain:"macsales.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://certify-js.alexametrics.com/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://certify.alexametrics.com/atrk.gif?account=A6ESk1ao6C52io" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript —>  
+
+<!-- This is breaking nggGallery slideshows. >:|
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+-->
+
+
+  <script>(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"rua.upush":"false","rua.cpush":"false","rua.upre":"false","rua.cpre":"false","rua.uprl":"false","rua.cprl":"false","rua.cprf":"false","rua.trans":"","rua.cook":"false","rua.ims":"false","rua.ufprl":"false","rua.cfprl":"false"}]);</script>
+  <script>!function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("False"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="MSLDD-4BLFC-6Q9JJ-JYDMB-948X9",function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,o,_,r=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);r.src="javascript:void(0)",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="width:0;height:0;border:0;display:none;",_=document.getElementsByTagName("script")[0],_.parentNode.insertBefore(r,_);try{o=r.contentWindow.document}catch(O){i=document.domain,r.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",o=r.contentWindow.document}o.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"MSLDD-4BLFC-6Q9JJ-JYDMB-948X9",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},o.write("<bo"+'dy onload="document._l();">'),o.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e=""=="true"?1:0,t="",n="jht5eqtimq22qxux3oea-f-7cda8f204-clientnsv4-s.akamaihd.net",i={"ak.v":"27","ak.cp":"507633","ak.ai":parseInt("334561",10),"ak.ol":"0","ak.cr":16,"ak.ipv":4,"ak.proto":"h2","ak.rid":"1738efe2","ak.r":25539,"ak.a2":e,"ak.m":"dsca","ak.n":"essl","ak.bpcip":"73.231.210.0","ak.cport":47716,"ak.gh":"104.99.239.55","ak.quicv":"","ak.tlsv":"tls1.2","ak.0rtt":"","ak.csrc":"-","ak.acc":"","ak.t":"1587010440","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==75mDRJ53io6RcD5pDCax+r9O76VPIWRJAnm87jlabR8DdrswBHH8I69vUc1+yzFUStZFEnNvgUYYSrqors7sES3DGNue3WYQrQjUge2ikLBxmrN2dM6I2YN0lxSoENDoVGiNz9D31x2PlUMP0l1KPcAVan1/U4M7oBaQ4HE/Hv/xwnlUhGXXCA4+V+9E9v40kw/lNKXiqNiqz4+iw9Nd6koecRT1LlzJJNIjGa7jLv0sXQiysrPsZDT71kRCQZIFyUETsr9KRaNH35h2XT1OCou5m6eBwLTXa+xR77G30gmbKxYnzIXrv8XNUsl7CJsUfQfg/AeX6FudBYWl0T/CkG6ap90J2cDNQcOAQjXYxm9wV+b3Tiv+yNg1vcOTsKa8fyJIl8jXEBtKiDztfHMW6IYQby7QkolvBIcBHNSU/lI=","ak.pv":"19"};if(""!==t)i["ak.ruds"]=t;var o={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))i["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(i)},rv:function(){var a=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.r","ak.acc","ak.t"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:i,akDNSPreFetchDomain:n,init:function(){if(!o.i){var a=BOOMR.subscribe;a("before_beacon",o.av,null,null),a("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/services.css"></head>
+
+<body class="post-template-default single single-post postid-46896 single-format-standard">
+    <div id="wrapper" class="hfeed container">
+
+        <span class="social">
+            <ul>
+                <li><a href="https://www.facebook.com/OWCmacsales"><span class="social_image"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/facebook.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/facebook.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/facebook@2x.png 2x" width="37" height="37"></span></a></li>
+                <li><a href="http://www.youtube.com/user/OWCmacsales"><span class="social_image"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/youtube.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/youtube.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/youtube@2x.png 2x" width="37" height="37"></span></a></li>
+                <li><a href="https://twitter.com/macsales"><span class="social_image"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/twitter.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/twitter.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/twitter@2x.png 2x" width="37" height="37"></span></a></li>
+                <li><a href="http://www.pinterest.com/owcmacsales/"><span class="social_image"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/pinterest.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/pinterest.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/pinterest@2x.png 2x" width="37" height="37"></span></a></li>
+                <li><a href="http://feeds.feedburner.com/owc"><span class="social_image"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/rss.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/rss.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/rss@2x.png 2x" width="37" height="37"></span></a></li>
+                <li><a href="mailto:social@macsales.com"><span class="social_image"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/share.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/share.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/social_icons/share@2x.png 2x" width="37" height="37"></span></a></li>
+            </ul>
+        </span>
+
+        <header id="header" role="banner">
+                <span class="header">
+                    <span class="wrapper">
+                        <span class="one-third column">
+                                <a href="https://blog.macsales.com/"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/rocket-yard-logo-1.png" alt="RocketYard - The official OWC Blog" width="286" height="66"></a>
+                        </span>
+                        <span class="two-thirds column">
+                                <span class="subline"><!--News, info, and commentary from OWC. The Apple upgrade outfitter of choice since 1988.-->
+                                						  Your source for expert tips, 
+special deals, commentary, reviews, and the latest tech news.</span>
+                        </span>
+                    </span>
+		</span><!-- header -->
+
+
+            <nav id="menu" role="navigation" class="nav">
+                <div class="menu-primary-container"><ul id="menu-primary" class="menu"><li id="menu-item-24231" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-24231"><a href="https://blog.macsales.com/category/industry-news/">Industry News</a></li>
+<li id="menu-item-24232" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-24232"><a href="https://blog.macsales.com/category/owc-news/">OWC News</a></li>
+<li id="menu-item-24233" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-24233"><a href="https://blog.macsales.com/category/product-spotlight/">Product Spotlight</a></li>
+<li id="menu-item-24234" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-24234"><a href="https://blog.macsales.com/category/tech-tips/">Tech Tips</a></li>
+<li id="menu-item-24235" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-24235"><a href="https://blog.macsales.com/category/testing-lab/">Testing Lab</a></li>
+<li id="menu-item-41606" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-41606"><a href="https://blog.macsales.com/category/procorner/">Pro Corner</a></li>
+<li id="menu-item-49118" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-49118"><a href="https://blog.macsales.com/category/tipoff/">TipOffs</a></li>
+</ul></div><!-- This instantiates the menu -->
+            </nav><!-- this ends nav -->
+
+
+
+            <nav id="mobile" role="navigation">
+
+                <div id="toggle-bar">
+                    <a class="navicon mtoggle" href="#">MAIN MENU</a>
+                </div>
+
+                <div class="menu-primary-container"><ul id="menu-primary-1" class="mmenu" style="display: none;"><li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-24231"><a href="https://blog.macsales.com/category/industry-news/">Industry News</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-24232"><a href="https://blog.macsales.com/category/owc-news/">OWC News</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-24233"><a href="https://blog.macsales.com/category/product-spotlight/">Product Spotlight</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-24234"><a href="https://blog.macsales.com/category/tech-tips/">Tech Tips</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-24235"><a href="https://blog.macsales.com/category/testing-lab/">Testing Lab</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-41606"><a href="https://blog.macsales.com/category/procorner/">Pro Corner</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-49118"><a href="https://blog.macsales.com/category/tipoff/">TipOffs</a></li>
+</ul></div>
+            </nav>
+
+
+
+
+            <div id="search">
+                <ul>
+                    <li><form role="search" method="get" id="searchform" action="https://blog.macsales.com/">
+    <div>
+        <input type="text" name="s" id="s" class="s" maxlength="120" placeholder="SEARCH ARTICLES...">
+        <input type="submit" id="searchsubmit" value=" ">
+    </div>
+</form></li><!-- This adds in the search bar below the menu -->
+
+                    <!-- Newsletter Button - Commented out until we are ready for the blog digest email -->
+                    <!--
+                    <img src="/images/seperator.png" />
+                    <li><a href="/subscribe"><i>GET THE OWC BLOG NEWSLETTER</i></a></li>
+                    -->
+
+                    <img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/seperator.png">
+                    <li><a href="https://blog.macsales.com/category/special-owc-deals"><i>SPECIAL DEALS</i></a></li>
+                    <img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/seperator.png" width="4" height="39">
+                    <li><a href="https://eshop.macsales.com/"><i>SHOP OWC</i></a></li>
+                    <img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/seperator.png">
+                    <li><a href="https://blog.macsales.com/site-archives"><i>ARTICLE ARCHIVES</i></a></li>
+ 
+<img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/seperator.png">
+<li><a href="#"><div id="myBtn"><i>NEWSLETTER SIGNUP</i></div></a></li>
+
+
+                </ul>
+            </div>
+
+
+<div id="newsletter-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">Close</span>
+        <div class="newsletter-title">Newsletter Signup</div>
+        <div class="newsletter-signup">Sign up for Rocket Yard Weekly to get expert tips, special deals, commentary, reviews, and tech news delivered to your inbox.</div>
+        <section>
+
+            <form action="https://app.bronto.com/public/webform/process/" method="post" class="validate-form">
+                <div class="newsletter-wrap">
+                    <label for="email" class="label-email">Email Address</label>
+                    <input type="hidden" name="fid" value="l6zoepb2cpzqpmhhuxwjktvije7cn">
+                    <input type="hidden" name="sid" value="267ff91c3db2e22b69787d76da5f05fd">
+                    <input type="hidden" name="delid" value="">
+                    <input type="hidden" name="subid" value="">
+                    <input type="hidden" name="td" value="">
+                    <input type="hidden" name="formtype" value="addcontact">
+                    <script type="text/javascript">
+                        var fieldMaps = {};
+                    </script>
+
+                    <input type="email" class="input-newsletter" required="" name="95062" title="required input">
+                    <input type="submit" class="btn-submit" value="Subscribe">
+                    <span id="status"></span>
+                    <br style="clear:both;">
+                    <div class="newsletter-notify">By joining our 
+newsletter, your e-mail information will only be used for the purpose of
+ sending the newsletter email of your choice.</div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+<style>
+#myBtn {cursor:pointer; text-decoration:none;}
+.newsletter-title { padding-bottom: 10px; font-weight: bold; margin-top: 40px; color: #010102; font-size: 32px; font-family: "Georgia","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif; }
+.modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.6); }
+.modal-content { text-align: center; background-color: #fefefe; margin: 15% auto; padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; background-color: #eeeeee; width: 495px; border: 12px solid #fff; }
+.close {font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif; color: #000; float: right; font-size: 12px; text-decoration: underline; }
+.close:hover,
+.close:focus { cursor: pointer }
+#newsletter-modal h2 { text-align: center; font-size: 32px; }
+.label-email {font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;  font-size: 14px; font-weight: bold; color: #000; display: block; text-align: left; padding-left: 2px; padding-bottom: 5px; }
+.input-newsletter { float: left; font-size: 14px; background-color: #FFF; border: 1px solid #000; cursor: text; height: auto!important; line-height: 26px; margin: 0 0 10px; overflow: hidden; padding: 7px 10px; position: relative; width: 310px; }
+.btn-submit {cursor:pointer; text-transform: uppercase; font-family: "Titillium","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif; padding: 0px; width: 120px; height: 42px; font-weight: 700; text-align: center; font-size: 14px; line-height: 100%; letter-spacing: -.15px; background-color: #0099ff; position: relative; display: inline-block; color: #fff; outline: none; -webkit-appearance: none; -moz-appearance: none; border: 1px solid #0099ff; margin-left: 8px; }
+.newsletter-wrap { width: 461px; margin-right: auto; margin-left: auto; margin-top: 40px; }
+.checkbox-receive { text-align: left; float: left; margin-left: 2px!important; font-size: 12px; color: #444; }
+.newsletter-notify {font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;  text-align: left; color: #444; font-size: 14px; font-style: italic; margin-top: 83px; }
+.newsletter-signup {font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;  font-size: 14px; color: #000; padding-left: 10px; padding-right: 10px; line-height: 150%; }
+#status { float: left; padding-top: 10px; position: absolute; display: block; }
+
+.invalid input:required:invalid { border: 1px solid #ff0000 }
+.invalid input:required:valid { border: 1px solid #333 }
+</style>
+
+	    <div id="mobile_search">
+                <ul>
+                    <li><form role="search" method="get" id="searchform" action="https://blog.macsales.com/">
+    <div>
+        <input type="text" name="s" id="s" class="s" maxlength="120" placeholder="SEARCH ARTICLES...">
+        <input type="submit" id="searchsubmit" value=" ">
+    </div>
+</form></li><!-- This adds in the search bar below the menu -->
+                </ul>
+            </div>
+
+            <br class="clear">
+        </header><!-- this ends header -->
+
+
+        <div class="container">
+<section id="content" role="main">
+    
+    <span class="content">
+        <span class="nine columns">
+                        <article id="post-46896" class="post-46896 post type-post status-publish format-standard has-post-thumbnail hentry category-tech-tips tag-apfs tag-disk-utility tag-finder tag-hfs tag-macos-extended-journaled tag-tech-tip">
+
+    <h1 class="single-title">
+        <a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/" title="How to Revert a drive from APFS back to HFS+" rel="bookmark">How to Revert a drive from APFS back to HFS+</a>
+    </h1>
+
+    <section class="entry-meta">
+	<!-- Display Time, The Author, and an edit button if logged in -->
+	<!-- Example display: Tuesday, June 18th, 2013  |  Author: OWC Michael | Edit -->
+	<span class="entry-date">Wednesday, December 19th, 2018</span>
+	<span class="meta-sep">  &nbsp;|&nbsp; </span>
+	<span class="entry-date">Author: <a href="https://blog.macsales.com/author/steve-sande/" title="Posts by Steve Sande" rel="author">Steve Sande</a></span>
+	<span class="entry-date"></span>
+</section>
+    <section class="single-content"><p><a href="https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458.jpg"><img class="aligncenter size-full wp-image-46905" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/apfs-2-e1545252186458.jpg" alt="" srcset="https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458.jpg 640w, https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458-190x91.jpg 190w, https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458-249x120.jpg 249w, https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458-284x137.jpg 284w, https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458-190x91@2x.jpg 380w, https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458-249x120@2x.jpg 498w, https://blog.macsales.com/wp-content/uploads/2018/12/apfs-2-e1545252186458-284x137@2x.jpg 568w" sizes="(max-width: 640px) 100vw, 640px" width="640" height="308"></a>Apple’s new <a href="https://blog.macsales.com/36808-tech-101-we-explain-the-new-apple-file-system-apfs" target="_blank" rel="noopener noreferrer">APFS (Apple File System)</a>
+ format is the default format for storage under&nbsp;macOS 10.14 Mojave,
+ replacing the dependable and long-lived HFS+ format. However, there are
+ still some instances where HFS+ needs to be used. For example, APFS is 
+incompatible with <a href="https://blog.macsales.com/32972-time-machine-what-it-is-how-it-works-and-how-to-use-it-with-your-mac" target="_blank" rel="noopener noreferrer">Apple’s Time Machine backup application</a> and FileVault 2 (which is used to encrypt full drives), and cannot be used to format <a href="https://blog.macsales.com/36227-everything-you-need-to-create-your-own-fusion-drive" target="_blank" rel="noopener noreferrer">Fusion drives</a> — those drives that use a combination of a <a href="https://eshop.macsales.com/shop/ssd/owc" target="_blank" rel="noopener noreferrer">solid-state drive</a> and conventional <a href="https://eshop.macsales.com/shop/internal_storage/hard_drives_and_SSD" target="_blank" rel="noopener noreferrer">hard disk drive</a>.
+ What if you accidentally format a drive in the APFS format and then 
+realize you can’t use Time Machine or FileVault 2? I recently ran into 
+this dilemma when I formatted an external drive in the APFS format and 
+it was unusable by Time Machine. In this tech tip, I’ll show you how to 
+revert back to HFS+.</p>
+<p>You can’t just use Disk Utility to reformat an APFS disk to HFS+ — 
+once it has been converted to APFS, the only options that appear for 
+erasing an APFS disk are to reformat in APFS. The method&nbsp;I’m 
+showing here requires some familiarity with the Terminal application, 
+which can be found in /Applications/Utilities.</p>
+<p><strong>Deleting the APFS Partition</strong><br>
+Launch the Terminal app, type the following command at the prompt to 
+locate the Physical Store identifier&nbsp;of the APFS partition, and 
+press Return:</p>
+<p><i>diskutil list</i></p>
+<div id="attachment_46900" style="width: 490px" class="wp-caption aligncenter"><a href="https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.25.52-AM.jpg"><img aria-describedby="caption-attachment-46900" class="size-full wp-image-46900" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/Screen-Shot-2018-12-19-at-11_003.jpg" alt="(The result of running 'diskutil list' in Terminal)" srcset="https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.25.52-AM.jpg 480w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.25.52-AM-144x190.jpg 144w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.25.52-AM-91x120.jpg 91w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.25.52-AM-245x323.jpg 245w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.25.52-AM-144x190@2x.jpg 288w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.25.52-AM-91x120@2x.jpg 182w" sizes="(max-width: 480px) 100vw, 480px" width="480" height="634"></a><p id="caption-attachment-46900" class="wp-caption-text"><strong>(The result of running ‘diskutil list’ in Terminal)</strong></p></div>
+<p>I have quite a few disks both in and attached to this iMac, so 
+there’s a long list as seen in the screenshot above. The important thing
+ is to find the drive we wish to revert to HFS+. In this case, it’s the 
+drive listed at the bottom. It is listed as an APFS Volume with a name 
+of ‘<a href="https://eshop.macsales.com/shop/owc-mercury-elite-pro-mini" target="_blank" rel="noopener noreferrer">OWC Mercury Elite Pro mini</a>‘ and a physical store reference of <i>disk5s2</i></p>
+<p>What I want to do now is destroy the APFS partition. This can be a 
+bit dicey if you have data stored on the drive, in which case you will 
+need to first back up the data to another drive. When ready to delete 
+the partition, we’ll type the following command:</p>
+<p><i>diskutil apfs deleteContainer /dev/disk5s2</i></p>
+<p>If you’re following these instructions, you’ll need to replace <i>disk5s2</i>&nbsp;with the correct identifier for your drive.</p>
+<div id="attachment_46901" style="width: 490px" class="wp-caption aligncenter"><a href="https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.38.33-AM-e1545244971697.jpg"><img aria-describedby="caption-attachment-46901" class="size-full wp-image-46901" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/Screen-Shot-2018-12-19-at-11.jpg" alt="(Running the diskutili apfs deleteContainer command in Terminal initializes the drive as HFS+)" srcset="https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.38.33-AM-e1545244971697.jpg 480w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.38.33-AM-e1545244971697-190x79.jpg 190w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.38.33-AM-e1545244971697-284x118.jpg 284w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.38.33-AM-e1545244971697-190x79@2x.jpg 380w" sizes="(max-width: 480px) 100vw, 480px" width="480" height="200"></a><p id="caption-attachment-46901" class="wp-caption-text"><strong>(Running the diskutili apfs deleteContainer command in Terminal initializes the drive as HFS+)</strong></p></div>
+<p>By default, the drive is wiped as an APFS disk, then initialized as a
+ case-insensitive HFS+ volume with the name ‘Untitled’. If you wish to 
+change the name back to something more recognizable, such as ‘OWC 
+Mercury Elite Pro mini’, that can be done in one of two ways:</p>
+<p><strong>1)</strong> In a&nbsp;Finder window,&nbsp;locate the drive 
+‘Untitled’, right-click on it, and select “Rename ‘Untitled'” (see 
+screenshot below). Type in the new name, then press Return.</p>
+<div id="attachment_46902" style="width: 490px" class="wp-caption aligncenter"><a href="https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.45.05-AM-e1545251035687.jpg"><img aria-describedby="caption-attachment-46902" class="size-full wp-image-46902" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/Screen-Shot-2018-12-19-at-11_002.jpg" alt="(Renaming the 'Untitled' drive in Finder)" srcset="https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.45.05-AM-e1545251035687.jpg 480w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.45.05-AM-e1545251035687-190x97.jpg 190w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.45.05-AM-e1545251035687-234x120.jpg 234w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.45.05-AM-e1545251035687-284x146.jpg 284w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.45.05-AM-e1545251035687-190x97@2x.jpg 380w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-11.45.05-AM-e1545251035687-234x120@2x.jpg 468w" sizes="(max-width: 480px) 100vw, 480px" width="480" height="246"></a><p id="caption-attachment-46902" class="wp-caption-text"><strong>(Renaming the ‘Untitled’ drive in Finder)</strong></p></div>
+<p><strong>2)</strong> In Disk Utility, click on the 
+drive&nbsp;‘Untitled’ to select it in the left sidebar, then click the 
+Erase button at the top of the window. Type in the new name for the 
+drive (in this case, ‘OWC Mercury Elite Pro mini’), make sure that 
+‘MacOS Extended&nbsp;(Journaled)’ is selected as the format, and click 
+Erase (see screenshot below).</p>
+<div id="attachment_46903" style="width: 490px" class="wp-caption aligncenter"><a href="https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-1.27.57-PM.jpg"><img aria-describedby="caption-attachment-46903" class="size-full wp-image-46903" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/Screen-Shot-2018-12-19-at-1.jpg" alt="(Using Disk Utility to rename a drive by erasing it)" srcset="https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-1.27.57-PM.jpg 480w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-1.27.57-PM-190x111.jpg 190w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-1.27.57-PM-205x120.jpg 205w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-1.27.57-PM-284x166.jpg 284w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-1.27.57-PM-190x111@2x.jpg 380w, https://blog.macsales.com/wp-content/uploads/2018/12/Screen-Shot-2018-12-19-at-1.27.57-PM-205x120@2x.jpg 410w" sizes="(max-width: 480px) 100vw, 480px" width="480" height="281"></a><p id="caption-attachment-46903" class="wp-caption-text"><strong>(Using Disk Utility to rename a drive by erasing it)</strong></p></div>
+<hr>
+<p>The key thing to remember is that reverting to HFS+ from APFS is a destructive change — <strong>any data on the drive that you’re switching back to HFS+ will be fully erased</strong>. Be certain to <a href="https://blog.macsales.com/?s=backup+plan" target="_blank" rel="noopener noreferrer">back up any important data</a> on the drive prior to attempting the change.</p>
+<p><b>Read more on&nbsp;APFS at the Rocket Yard:&nbsp;</b></p>
+<ul>
+<li><a title="OWC VP of Software Engineering Talks APFS, T2 Chip at MacSysAdmin 2018" href="https://blog.macsales.com/46833-owc-vp-of-software-engineering-talks-apfs-t2-chip-at-macsysadmin-2018-conference" target="_blank" rel="bookmark noopener noreferrer">OWC VP of Software Engineering Talks APFS, T2 Chip at MacSysAdmin 2018</a></li>
+<li><a title="Tech 101: Explaining the New Apple File System (APFS)" href="https://blog.macsales.com/36808-tech-101-we-explain-the-new-apple-file-system-apfs" rel="bookmark">Tech 101: Explaining the New Apple File System (APFS)</a></li>
+<li><a title="First Aid: Verify and Repair HFS+, APFS Drives with Disk Utility" href="https://blog.macsales.com/44661-first-aid-verify-and-repair-hfs-apfs-drives-with-disk-utility" rel="bookmark">First Aid: Verify and Repair HFS+, APFS Drives with Disk Utility</a></li>
+<li><a title="Translating Apple’s New High Sierra &amp; APFS Compatibility Document" href="https://blog.macsales.com/42316-update-macos-high-sierra-and-apfs-compatibility" rel="bookmark">Translating Apple’s New High Sierra &amp; APFS Compatibility Document</a></li>
+<li><a title="Partition Drives &amp; Create APFS ‘Containers’ for Space Sharing with Disk Utility" href="https://blog.macsales.com/44596-partition-drives-create-apfs-containers-for-space-sharing-with-disk-utility" rel="bookmark">Partition Drives &amp; Create APFS ‘Containers’ for Space Sharing with Disk Utility</a></li>
+<li><a title="Using APFS On HDDs … And Why You Might Not Want To" href="https://blog.macsales.com/43043-using-apfs-on-hdds-and-why-you-might-not-want-to" rel="bookmark">Using APFS On HDDs … And Why You Might Not Want To</a></li>
+<li><a title="Can APFS be used with Time Machine, Boot Camp, and File Vault?" href="https://blog.macsales.com/42830-can-apfs-be-used-with-time-machine-boot-camp-and-file-vault" rel="bookmark">Can APFS be used with Time Machine, Boot Camp, and File Vault?</a></li>
+<li><a title="The Speed of APFS: Just How Fast Is It?" href="https://blog.macsales.com/42901-the-speed-of-apfs-just-how-fast-is-it" rel="bookmark">The Speed of APFS: Just How Fast Is It?</a></li>
+</ul>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Be Sociable, Share This!</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-46896" class="share-facebook sd-button share-icon no-text" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?share=facebook&amp;nb=1" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-46896" class="share-linkedin sd-button share-icon no-text" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?share=linkedin&amp;nb=1" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-46896" class="share-twitter sd-button share-icon no-text" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-pinterest"><a rel="nofollow noopener noreferrer" data-shared="sharing-pinterest-46896" class="share-pinterest sd-button share-icon no-text" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?share=pinterest&amp;nb=1" target="_blank" title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest (Opens in new window)</span></a></li><li class="share-email share-service-visible"><a rel="nofollow noopener noreferrer" data-shared="" class="share-email sd-button share-icon no-text" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?share=email&amp;nb=1" target="_blank" title="Click to email this to a friend"><span></span><span class="sharing-screen-reader-text">Click to email this to a friend (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div></section>
+
+    <footer class="entry-footer">
+    
+	<!-- Display Tags at bottom of Post if any exist -->
+	<span class="tag-links"><span class="tag-title">TAGS:</span> <a href="https://blog.macsales.com/tag/apfs/" rel="tag">APFS</a>, <a href="https://blog.macsales.com/tag/disk-utility/" rel="tag">Disk Utility</a>, <a href="https://blog.macsales.com/tag/finder/" rel="tag">Finder</a>, <a href="https://blog.macsales.com/tag/hfs/" rel="tag">HFS+</a>, <a href="https://blog.macsales.com/tag/macos-extended-journaled/" rel="tag">MacOS Extended (Journaled)</a>, <a href="https://blog.macsales.com/tag/tech-tip/" rel="tag">Tech Tip</a></span>
+</footer>
+    <br class="clear">
+
+</article>
+            
+
+<section id="comments">
+<hr>
+
+
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#respond" style="display:none;">CLICK HERE TO CANCEL REPLY</a></small></h3><form action="https://blog.macsales.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><span class="comment-title">LEAVE A COMMENT</span><p class="comment-form-comment"><textarea id="comment" name="comment" rows="10" cols="50" aria-required="true"></textarea></p><p class="comment-form-author"><label for="author">Name (required)</label> <input id="author" name="author" type="text"></p>
+<p class="comment-form-email"><label for="email">Email (required)</label> <input id="email" name="email" type="text"></p>
+
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit"> <input type="hidden" name="comment_post_ID" value="46896" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="c92758a6ce"></p><!-- Anti-spam plugin wordpress.org/plugins/anti-spam/ --><div class="wantispam-required-fields wantispam-form-processed"><input type="hidden" name="wantispam_t" class="wantispam-control wantispam-control-t" value="1587010437"><div class="wantispam-group wantispam-group-q" style="clear: both; display: none;">
+					<label>Current ye@r <span class="required">*</span></label>
+					<input type="hidden" name="wantispam_a" class="wantispam-control wantispam-control-a" value="2020">
+					<input type="text" name="wantispam_q" class="wantispam-control wantispam-control-q" value="2020" autocomplete="off">
+				  </div>
+<div class="wantispam-group wantispam-group-e" style="display: none;">
+					<label>Leave this field empty</label>
+					<input type="text" name="wantispam_e_email_url_website" class="wantispam-control wantispam-control-e" autocomplete="off">
+				  </div>
+<input type="hidden" name="wantispam_d" class="wantispam-control wantispam-control-d" value="2020"></div><!--\End Anti-spam plugin --><p style="display: none;"></p><input type="hidden" id="ak_js" name="ak_js" value="1587010440512"></form>	</div><!-- #respond -->
+	
+
+<!-- Begin list of all comments for post -->
+<section id="comments-list" class="comments">
+    
+    
+    <ul>
+    
+		<li class="comment even thread-even depth-1" id="comment-124986">
+                
+		                
+		<div id="div-comment-124986" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/fe187e4aaac510d06ef51b04e2cd5d75.jpg" srcset="https://secure.gravatar.com/avatar/fe187e4aaac510d06ef51b04e2cd5d75?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-fe187e4aaac510d06ef51b04e2cd5d75-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-124986">
+                          Jack @ 2:33 am on March 30, 2020</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Hello,</p>
+<p>I’m trying to delete this container:<br>
+#:                       TYPE NAME                    SIZE       IDENTIFIER<br>
+   0:      GUID_partition_scheme                        *1.0 TB     disk0<br>
+   1:                        EFI EFI                     209.7 MB   disk0s1<br>
+   2:                 Apple_APFS Container disk1         1000.0 GB  disk0s2</p>
+<p>However, I keep getting this error:</p>
+<p>diskutil apfs deletecontainer /dev/disk0s2</p>
+<p>Started APFS operation on disk1<br>
+Deleting APFS Container with all of its APFS Volumes<br>
+Unmounting Volumes<br>
+Unmounting Volume “Macintosh HD” on disk1s1<br>
+The volume “Macintosh HD” on disk1s1 couldn’t be unmounted because it is in use by process 0 (kernel)<br>
+Error: -69888: Couldn’t unmount disk</p>
+<p>I also tried the Disk Utility option, but the convert APFS to HFS+ 
+icon was grayed out and it would only let me “Add” other APFS volumes. 
+It appears the only way to do this is to boot your Computer from an 
+External drive. Using this method, the OS doesn’t consider the internal 
+drive as the boot disk.</p>
+<p>If you delete this container, you lose the OS all together. I think. I need to OS, but not APFS format. I need HFS+</p>
+<p>Any other suggestions?</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=124986#respond" data-commentid="124986" data-postid="46896" data-belowelement="div-comment-124986" data-respondelement="respond" aria-label="Reply to Jack">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-113927">
+                
+		                
+		<div id="div-comment-113927" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/01120f5a2e691c1d3d1c468fcf6fd490.jpg" srcset="https://secure.gravatar.com/avatar/01120f5a2e691c1d3d1c468fcf6fd490?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-01120f5a2e691c1d3d1c468fcf6fd490-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-113927">
+                          Meso Nefar @ 4:54 pm on February 1, 2020</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Thanks for the tutorial, but trying to follow it it
+ seems I found out the hard way this won’t work on a startup drive. Will
+ it? That’s a detail that’s important to point out. Don’t you think?</p>
+<p>Also, it appears Time Machine now works with APFS. No?</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=113927#respond" data-commentid="113927" data-postid="46896" data-belowelement="div-comment-113927" data-respondelement="respond" aria-label="Reply to Meso Nefar">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1" id="comment-113413">
+                
+		                
+		<div id="div-comment-113413" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/a517bced5352b40586756f184244f606.jpg" srcset="https://secure.gravatar.com/avatar/a517bced5352b40586756f184244f606?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-a517bced5352b40586756f184244f606-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-113413">
+                          Jiri @ 2:59 pm on January 29, 2020</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Super! Thank You very much. Jiri</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=113413#respond" data-commentid="113413" data-postid="46896" data-belowelement="div-comment-113413" data-respondelement="respond" aria-label="Reply to Jiri">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-111983">
+                
+		                
+		<div id="div-comment-111983" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/884ca2fc965ae3cd26760c04452762ca.jpg" srcset="https://secure.gravatar.com/avatar/884ca2fc965ae3cd26760c04452762ca?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-884ca2fc965ae3cd26760c04452762ca-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-111983">
+                          smayer97 @ 10:34 am on January 14, 2020</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Again, you CAN reformat a drive from APFS to HSFS+ by selecting the CONTAINER instead of just the Volume inside the container.</p>
+<p>TO show all containers, go to the View menu and select Show All Devices. Now you will see both containers and volumes.</p>
+<p>(Disk Utility simply does not allow the reformatting of a VOLUME from
+ APFS to HFS+. The above step takes care of that. No terminal commands 
+needed).</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=111983#respond" data-commentid="111983" data-postid="46896" data-belowelement="div-comment-111983" data-respondelement="respond" aria-label="Reply to smayer97">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1" id="comment-110923">
+                
+		                
+		<div id="div-comment-110923" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/526559c87dac487ba7eb1022b25d6778.jpg" srcset="https://secure.gravatar.com/avatar/526559c87dac487ba7eb1022b25d6778?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-526559c87dac487ba7eb1022b25d6778-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-110923">
+                          CAROL @ 4:47 pm on January 4, 2020</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>THANK YOU!!!!!!!</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=110923#respond" data-commentid="110923" data-postid="46896" data-belowelement="div-comment-110923" data-respondelement="respond" aria-label="Reply to CAROL">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-110491">
+                
+		                
+		<div id="div-comment-110491" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/e50b65019c6e9a4ce9f536a7b297d924.jpg" srcset="https://secure.gravatar.com/avatar/e50b65019c6e9a4ce9f536a7b297d924?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-e50b65019c6e9a4ce9f536a7b297d924-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-110491">
+                          Paul @ 1:03 pm on November 25, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>These commands don’t work for me.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=110491#respond" data-commentid="110491" data-postid="46896" data-belowelement="div-comment-110491" data-respondelement="respond" aria-label="Reply to Paul">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1 parent" id="comment-110328">
+                
+		                
+		<div id="div-comment-110328" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/f625ac4ce850fdbfea16133ca4df2af3.jpg" srcset="https://secure.gravatar.com/avatar/f625ac4ce850fdbfea16133ca4df2af3?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-f625ac4ce850fdbfea16133ca4df2af3-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-110328">
+                          Eva @ 9:01 pm on November 11, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Got both commands in, but then got “error69888 couldn’t uninstall disk because in user by process 1”</p>
+<p>This is effed. I need to get back to my ancient os so my treasured old programs run.</p>
+<p>Can’t get back bc Catalina is apfs and my old is is hfs.</p>
+<p>What to try next????</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=110328#respond" data-commentid="110328" data-postid="46896" data-belowelement="div-comment-110328" data-respondelement="respond" aria-label="Reply to Eva">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		<ul class="children">
+
+		<li class="comment odd alt depth-2" id="comment-110333">
+                
+		                
+		<div id="div-comment-110333" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/884ca2fc965ae3cd26760c04452762ca.jpg" srcset="https://secure.gravatar.com/avatar/884ca2fc965ae3cd26760c04452762ca?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-884ca2fc965ae3cd26760c04452762ca-1" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-110333">
+                          smayer97 @ 1:38 pm on November 12, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>BTW, if unable to convert a APFS formatted drive 
+back to HFS+ for whatever reason, you can still create a HFS+ partition 
+on a APFS formatted drive using Disk Utility.</p>
+<p>Then that new HFS+ partition can be used to install older macOS versions, etc.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=110333#respond" data-commentid="110333" data-postid="46896" data-belowelement="div-comment-110333" data-respondelement="respond" aria-label="Reply to smayer97">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-109979">
+                
+		                
+		<div id="div-comment-109979" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/2a8e4dc570ddb9789b188e1acbaab359.jpg" srcset="https://secure.gravatar.com/avatar/2a8e4dc570ddb9789b188e1acbaab359?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-2a8e4dc570ddb9789b188e1acbaab359-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-109979">
+                          Olivier De Kegel @ 8:47 pm on October 21, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Hi,<br>
+Wow! That was amazing, I am from the last generation that did not get 
+computer classes and thought I might have trouble doing this procedure 
+(I do have a lot of contact with computer and programming based 
+projects)… But your tutorial was the best. I succeeded from the first 
+try. Thank you so much for posting this. It saved me a few drives. thank
+ you so much, Olivier</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=109979#respond" data-commentid="109979" data-postid="46896" data-belowelement="div-comment-109979" data-respondelement="respond" aria-label="Reply to Olivier De Kegel">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-even depth-1" id="comment-109857">
+                
+		                
+		<div id="div-comment-109857" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/cd185d74b51d39467a829fff1139d2ac.jpg" srcset="https://secure.gravatar.com/avatar/cd185d74b51d39467a829fff1139d2ac?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-cd185d74b51d39467a829fff1139d2ac-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-109857">
+                          Margaret @ 11:01 am on October 17, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>In my case, the disk I want to revert back to HFS 
+is my internal hard drive on my imac. I installed Catalina when I 
+shouldn’t have. As you noted, I can’t use Time Machine to revert back to
+ the day before the Catalina install.</p>
+<p>What do I do in this situation? Thank you.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=109857#respond" data-commentid="109857" data-postid="46896" data-belowelement="div-comment-109857" data-respondelement="respond" aria-label="Reply to Margaret">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-109344">
+                
+		                
+		<div id="div-comment-109344" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/6cd708bb80a94db1ed3965bbf7e0a27b.jpg" srcset="https://secure.gravatar.com/avatar/6cd708bb80a94db1ed3965bbf7e0a27b?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-6cd708bb80a94db1ed3965bbf7e0a27b-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-109344">
+                          Trygve Roos @ 3:19 am on September 15, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>An easier way i.e. avoiding using Terminal is to 
+start up from an external disk running and older OSX (in my case 
+Yosemite), use Disk Utility to erase the APFS partition and chose HFS+.<br>
+Then I used the venerable SuperDuper to clone the Yosemite disk onto the partition. I works perfect!<br>
+It was very important to me that I can run Yosemite, because my most 
+important program for my audio productions is Soundtrack Pro, which 
+hasn’t been supported on any newer OSX.<br>
+Now I can start up my MacBook Pro using any of the two OSX versions.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=109344#respond" data-commentid="109344" data-postid="46896" data-belowelement="div-comment-109344" data-respondelement="respond" aria-label="Reply to Trygve Roos">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-even depth-1" id="comment-109301">
+                
+		                
+		<div id="div-comment-109301" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/213da02c3a4d99fee8139d58631b348b.jpg" srcset="https://secure.gravatar.com/avatar/213da02c3a4d99fee8139d58631b348b?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-213da02c3a4d99fee8139d58631b348b-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-109301">
+                          Brian Lewis @ 1:53 am on September 11, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Thanks…exact same circumstance with my new 4T 
+backup drive. Worked like a charm, my backup folder is being copied over
+ from the old backup as I write.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=109301#respond" data-commentid="109301" data-postid="46896" data-belowelement="div-comment-109301" data-respondelement="respond" aria-label="Reply to Brian Lewis">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-108935">
+                
+		                
+		<div id="div-comment-108935" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/884ca2fc965ae3cd26760c04452762ca.jpg" srcset="https://secure.gravatar.com/avatar/884ca2fc965ae3cd26760c04452762ca?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-884ca2fc965ae3cd26760c04452762ca-2" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-108935">
+                          smayer97 @ 4:29 am on August 1, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Also, as previously mentioned by @GA @ 4:27 am on January 26, 2019<br>
+Paragon has a free utility that apparently performs this conversion from
+ APFS to HFS+ non-destructively, in other words, the drive does not need
+ to be reformatted so you do not lose any data. (I have not tried this 
+personally.)</p>
+<p>It can be found here:<br>
+<a href="https://www.paragon-software.com/home/apfs-hfs-converter/" rel="nofollow ugc">https://www.paragon-software.com/home/apfs-hfs-converter/</a></p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=108935#respond" data-commentid="108935" data-postid="46896" data-belowelement="div-comment-108935" data-respondelement="respond" aria-label="Reply to smayer97">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-even depth-1" id="comment-108900">
+                
+		                
+		<div id="div-comment-108900" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/884ca2fc965ae3cd26760c04452762ca.jpg" srcset="https://secure.gravatar.com/avatar/884ca2fc965ae3cd26760c04452762ca?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-884ca2fc965ae3cd26760c04452762ca-3" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-108900">
+                          smayer97 @ 4:44 am on July 28, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>This does not seem to be necessary. </p>
+<p>Though it is true that if a drive is formatted as APFS, trying to 
+re-format the VOLUME (using the ‘Erase’ function) will ONLY give you the
+ APFS options.</p>
+<p>BUT if you select the CONTAINER for that volume, you CAN re-format an
+ APFS drive to ANY OTHER format, including exFAT, FAT32, AND HFS+. Of 
+course, if there are multiple volumes in the container, all will be 
+re-formatted.</p>
+<p>Not sure what I am missing but I see those options available.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=108900#respond" data-commentid="108900" data-postid="46896" data-belowelement="div-comment-108900" data-respondelement="respond" aria-label="Reply to smayer97">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-108591">
+                
+		                
+		<div id="div-comment-108591" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/3a6cebbde80f2a85ccef943ecf0b9c0c.jpg" srcset="https://secure.gravatar.com/avatar/3a6cebbde80f2a85ccef943ecf0b9c0c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-3a6cebbde80f2a85ccef943ecf0b9c0c-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-108591">
+                          Tony @ 4:31 pm on June 27, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>changing APFS to HSF and HSF and APSF, if you 
+format a drive with APFS and clone a HFS OS drive to it it will make it a
+ APFS Drive and a drive formatted HFS to a APFS drive it will make it a 
+HSF Drive, done  this using The Mac Carbon Copy app, i know it works</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=108591#respond" data-commentid="108591" data-postid="46896" data-belowelement="div-comment-108591" data-respondelement="respond" aria-label="Reply to Tony">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-even depth-1" id="comment-108364">
+                
+		                
+		<div id="div-comment-108364" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/45e2a0fda32cc5ded049e2c180dc4596.jpg" srcset="https://secure.gravatar.com/avatar/45e2a0fda32cc5ded049e2c180dc4596?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-45e2a0fda32cc5ded049e2c180dc4596-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-108364">
+                          Tho @ 2:43 am on June 3, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Sorry that I copied your photo to paste it on Wikipedia, Steve!</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=108364#respond" data-commentid="108364" data-postid="46896" data-belowelement="div-comment-108364" data-respondelement="respond" aria-label="Reply to Tho">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-108153">
+                
+		                
+		<div id="div-comment-108153" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/b619f3b1392cc6b1a54361369f326fea.jpg" srcset="https://secure.gravatar.com/avatar/b619f3b1392cc6b1a54361369f326fea?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-b619f3b1392cc6b1a54361369f326fea-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-108153">
+                          Magno @ 3:24 pm on May 12, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>You saved my laptop. Thank you very much.<br>
+May God bless you all!!</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=108153#respond" data-commentid="108153" data-postid="46896" data-belowelement="div-comment-108153" data-respondelement="respond" aria-label="Reply to Magno">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-even depth-1" id="comment-108144">
+                
+		                
+		<div id="div-comment-108144" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/aab35752676a2291e481e6cdfcbbe28e.jpg" srcset="https://secure.gravatar.com/avatar/aab35752676a2291e481e6cdfcbbe28e?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-aab35752676a2291e481e6cdfcbbe28e-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-108144">
+                          Luke @ 8:58 pm on May 10, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>This was great. Thank you so much! I formatted a 
+drive as APFS and Disk Utility wouldn’t let me go back, but this trick 
+did it. Thank you!</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=108144#respond" data-commentid="108144" data-postid="46896" data-belowelement="div-comment-108144" data-respondelement="respond" aria-label="Reply to Luke">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-108084">
+                
+		                
+		<div id="div-comment-108084" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/1e6d08b322f14bef215cf2dda844b369.jpg" srcset="https://secure.gravatar.com/avatar/1e6d08b322f14bef215cf2dda844b369?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-1e6d08b322f14bef215cf2dda844b369-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-108084">
+                          AJ @ 2:38 am on May 5, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Incredibly helpful thanks for taking the time to 
+write this! One thing I noticed when reading that made me go back and 
+re-read to better understand the intent behind the words was this 
+portion:</p>
+<p>“…will need to back up the data to another drive. To do this, we’ll type the following command:”</p>
+<p>The way it is phrased here seems like the upcoming command will help 
+with backing up the drive instead of deleting it. Might want to rephrase
+ that a bit, or maybe add the backup aside as a note within parenthesis 
+or the like.</p>
+<p>Thanks again!</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=108084#respond" data-commentid="108084" data-postid="46896" data-belowelement="div-comment-108084" data-respondelement="respond" aria-label="Reply to AJ">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		<ul class="children">
+
+		<li class="comment odd alt depth-2 parent" id="comment-108398">
+                
+		                
+		<div id="div-comment-108398" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/86694e273ce2832200ccf9ad02287797.jpg" srcset="https://secure.gravatar.com/avatar/86694e273ce2832200ccf9ad02287797?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-86694e273ce2832200ccf9ad02287797-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-108398">
+                          Rick @ 6:55 am on June 8, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>My thoughts, too! While reading I knew we were 
+about to destroy all data on the disk, but the way it was worded, I 
+could imagine some poor soul thinking that the following command was 
+going to back up all the data.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=108398#respond" data-commentid="108398" data-postid="46896" data-belowelement="div-comment-108398" data-respondelement="respond" aria-label="Reply to Rick">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		<ul class="children">
+
+		<li class="comment even depth-3" id="comment-109651">
+                
+		                
+		<div id="div-comment-109651" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/c45e97d8552e84b7f4771bd34307847c.png" srcset="https://secure.gravatar.com/avatar/c45e97d8552e84b7f4771bd34307847c?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-c45e97d8552e84b7f4771bd34307847c-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-109651">
+                          Jake @ 3:58 pm on October 10, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>+1</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=109651#respond" data-commentid="109651" data-postid="46896" data-belowelement="div-comment-109651" data-respondelement="respond" aria-label="Reply to Jake">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li class="comment byuser comment-author-owc-mark-c odd alt depth-2" id="comment-109652">
+                
+		                
+		<div id="div-comment-109652" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/223dff642ea2dbbc1960b95c542abe30.png" srcset="https://secure.gravatar.com/avatar/223dff642ea2dbbc1960b95c542abe30?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-223dff642ea2dbbc1960b95c542abe30-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-109652">
+                          OWC Mark C @ 4:21 pm on October 10, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Thanks for the input, the text has been updated to read a bit more clearly!</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=109652#respond" data-commentid="109652" data-postid="46896" data-belowelement="div-comment-109652" data-respondelement="respond" aria-label="Reply to OWC Mark C">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1" id="comment-107950">
+                
+		                
+		<div id="div-comment-107950" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/d1aef05ddead815bf08df86d368a2d02.jpg" srcset="https://secure.gravatar.com/avatar/d1aef05ddead815bf08df86d368a2d02?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-d1aef05ddead815bf08df86d368a2d02-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-107950">
+                          Birck Cox @ 5:12 pm on April 19, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Thank you for this detailed procedure. It worked 
+for me. Disk Utility was a no-go until I used Terminal. Note: It didn’t 
+work as long as I had the disk in an external disk-dock. But when I 
+pulled it out, mounted a carrier bracket and slid it into the Mac Pro, 
+the commands worked.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=107950#respond" data-commentid="107950" data-postid="46896" data-belowelement="div-comment-107950" data-respondelement="respond" aria-label="Reply to Birck Cox">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-107720">
+                
+		                
+		<div id="div-comment-107720" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/b91c5482767735103ad535fb919a3435.jpg" srcset="https://secure.gravatar.com/avatar/b91c5482767735103ad535fb919a3435?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-b91c5482767735103ad535fb919a3435-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-107720">
+                          Leah @ 1:28 pm on March 21, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>OMG! This is amazing and thank you so much for posting this.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=107720#respond" data-commentid="107720" data-postid="46896" data-belowelement="div-comment-107720" data-respondelement="respond" aria-label="Reply to Leah">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1" id="comment-107582">
+                
+		                
+		<div id="div-comment-107582" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/9f2545a3285412750b3bf825ebb3fd3f.jpg" srcset="https://secure.gravatar.com/avatar/9f2545a3285412750b3bf825ebb3fd3f?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-9f2545a3285412750b3bf825ebb3fd3f-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-107582">
+                          Ovidiu Metes @ 12:31 pm on March 6, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Thank you! You saved may day!</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=107582#respond" data-commentid="107582" data-postid="46896" data-belowelement="div-comment-107582" data-respondelement="respond" aria-label="Reply to Ovidiu Metes">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-107187">
+                
+		                
+		<div id="div-comment-107187" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/61bbfb988fd48647cd145cc8cebfd29e.jpg" srcset="https://secure.gravatar.com/avatar/61bbfb988fd48647cd145cc8cebfd29e?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-61bbfb988fd48647cd145cc8cebfd29e-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-107187">
+                          GA @ 4:27 am on January 26, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Paragon, an excellent company, have produced a free app which will convert APFS to HFS+ very simply and quickly.<br>
+I have just used it on an external WD drive where I keep my iTunes library, connected to an Airport Extreme.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=107187#respond" data-commentid="107187" data-postid="46896" data-belowelement="div-comment-107187" data-respondelement="respond" aria-label="Reply to GA">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-even depth-1" id="comment-106860">
+                
+		                
+		<div id="div-comment-106860" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/9499f2772800f10edcb07b8f69a32e98.jpg" srcset="https://secure.gravatar.com/avatar/9499f2772800f10edcb07b8f69a32e98?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-9499f2772800f10edcb07b8f69a32e98-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-106860">
+                          martin @ 4:14 pm on January 1, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>This won’t work with the main internal HD right?  Also, how to check which format is being used on any drive?<br>
+thank you!</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=106860#respond" data-commentid="106860" data-postid="46896" data-belowelement="div-comment-106860" data-respondelement="respond" aria-label="Reply to martin">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-106812">
+                
+		                
+		<div id="div-comment-106812" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/5a60cc7a1ae062ead392cebb46caac71.jpg" srcset="https://secure.gravatar.com/avatar/5a60cc7a1ae062ead392cebb46caac71?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-5a60cc7a1ae062ead392cebb46caac71-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-106812">
+                          Mark Jeffrey Provda @ 6:55 pm on December 28, 2018</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>My MacBook Air had no problem using a new esternal 
+HD with AFPS with TM (maybe because the HD in the MacBook Air, being 
+SSD, was converted to AFPS with Mojave)</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=106812#respond" data-commentid="106812" data-postid="46896" data-belowelement="div-comment-106812" data-respondelement="respond" aria-label="Reply to Mark Jeffrey Provda">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		<ul class="children">
+
+		<li class="comment even depth-2" id="comment-107410">
+                
+		                
+		<div id="div-comment-107410" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/fb2e1b955bc5c2696a7c14a2704d21c9.jpg" srcset="https://secure.gravatar.com/avatar/fb2e1b955bc5c2696a7c14a2704d21c9?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-fb2e1b955bc5c2696a7c14a2704d21c9-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-107410">
+                          uk_gus @ 7:36 pm on February 16, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Another superb, concise article from Rocket Yard. 
+Thanks to all concerned. My external Thunderbolt 3 drive was anything 
+but useful – being suddenly cluttered with apparently essential Mac 
+inspired temporary files of the /private/var/folders/zz etc. etc. kind. A
+ plethora of inaccurate warning messages led me to re-format to HFS+ 
+(after finding this Rocket Yard post). Seems like 100% success so far – 
+no more garbage so far. Many thanks again.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=107410#respond" data-commentid="107410" data-postid="46896" data-belowelement="div-comment-107410" data-respondelement="respond" aria-label="Reply to uk_gus">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-even depth-1" id="comment-106810">
+                
+		                
+		<div id="div-comment-106810" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/60c0a04809a239fb8d64470e73fbe740.jpg" srcset="https://secure.gravatar.com/avatar/60c0a04809a239fb8d64470e73fbe740?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-60c0a04809a239fb8d64470e73fbe740-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-106810">
+                          MaX @ 5:25 pm on December 28, 2018</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>APFS is a deal breaker until Apple finishes it 
+(yes, it is a beta yet) and releases full specifications, so that Alsoft
+ can release DiskWarrior 6 to rebuild directory of APFS disks. And do 
+not forget Time Machine 2 on such disks as well. By end 2019? Hopefully!</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=106810#respond" data-commentid="106810" data-postid="46896" data-belowelement="div-comment-106810" data-respondelement="respond" aria-label="Reply to MaX">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-106746">
+                
+		                
+		<div id="div-comment-106746" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/99de0a3f33cfa0460b5e9c9307bc621b.jpg" srcset="https://secure.gravatar.com/avatar/99de0a3f33cfa0460b5e9c9307bc621b?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-99de0a3f33cfa0460b5e9c9307bc621b-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-106746">
+                          Chris @ 7:57 pm on December 22, 2018</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>All of that terminal work is completely 
+unnecessary. Mojave’s Disk Utility absolutely can reformat AFPS drives 
+to HFS+ drives. From the View menu, select “Show all devices”. Then it’s
+ a piece of cake to select the drive and reformat it.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=106746#respond" data-commentid="106746" data-postid="46896" data-belowelement="div-comment-106746" data-respondelement="respond" aria-label="Reply to Chris">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		<ul class="children">
+
+		<li class="comment odd alt depth-2" id="comment-107110">
+                
+		                
+		<div id="div-comment-107110" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/ff00487f077c1f192b73a3de3efa4770.jpg" srcset="https://secure.gravatar.com/avatar/ff00487f077c1f192b73a3de3efa4770?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-ff00487f077c1f192b73a3de3efa4770-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-107110">
+                          Paul @ 4:56 pm on January 20, 2019</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Chris, when I try this, I get the error “Erase 
+process has failed.” I am trying to re-format my internal drive (from a 
+backup drive).</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=107110#respond" data-commentid="107110" data-postid="46896" data-belowelement="div-comment-107110" data-respondelement="respond" aria-label="Reply to Paul">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+
+		<li class="comment even depth-2" id="comment-115427">
+                
+		                
+		<div id="div-comment-115427" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/23a223f191fd52547193d870c3e08884.jpg" srcset="https://secure.gravatar.com/avatar/23a223f191fd52547193d870c3e08884?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-23a223f191fd52547193d870c3e08884-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-115427">
+                          Roger @ 10:26 pm on February 26, 2020</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Yeah. At least for an external drive, Chris is correct. Simply selecting “Show All Devices” allowed me to reformat to HFS+.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=115427#respond" data-commentid="115427" data-postid="46896" data-belowelement="div-comment-115427" data-respondelement="respond" aria-label="Reply to Roger">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-106708">
+                
+		                
+		<div id="div-comment-106708" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/1534ab968381161972e9f12e05cc8961.jpg" srcset="https://secure.gravatar.com/avatar/1534ab968381161972e9f12e05cc8961?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-1534ab968381161972e9f12e05cc8961-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-106708">
+                          DG @ 1:34 am on December 20, 2018</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Apple dropped the ball here. How sloppy it is that TM is incompatible with their new FS.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=106708#respond" data-commentid="106708" data-postid="46896" data-belowelement="div-comment-106708" data-respondelement="respond" aria-label="Reply to DG">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		<ul class="children">
+
+		<li class="comment even depth-2" id="comment-106781">
+                
+		                
+		<div id="div-comment-106781" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/1a27961ada00f5caecc1b4c631e399d6.jpg" srcset="https://secure.gravatar.com/avatar/1a27961ada00f5caecc1b4c631e399d6?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-1a27961ada00f5caecc1b4c631e399d6-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-106781">
+                          drx11 @ 4:45 pm on December 26, 2018</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>I have found people in IT profoundly lazy and not 
+all that bright…  Some are smart, for sure, yet one would think they 
+would figure out this and the NeXT technology by now.</p>
+<p>I feel this technology is never really taught.  Who wants to code all day?</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=106781#respond" data-commentid="106781" data-postid="46896" data-belowelement="div-comment-106781" data-respondelement="respond" aria-label="Reply to drx11">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-106707">
+                
+		                
+		<div id="div-comment-106707" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/a0e8f58fe941042f37246cfdb4484565.jpg" srcset="https://secure.gravatar.com/avatar/a0e8f58fe941042f37246cfdb4484565?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-a0e8f58fe941042f37246cfdb4484565-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-106707">
+                          Don @ 12:07 am on December 20, 2018</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>A couple of points: First, older versions of Disk 
+Utility (e.g. the version in Sierra) *can* reformat an APFS drive to 
+HFS+. Second, Fusion drives most definitely can be formatted as APFS.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=106707#respond" data-commentid="106707" data-postid="46896" data-belowelement="div-comment-106707" data-respondelement="respond" aria-label="Reply to Don">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		<ul class="children">
+
+		<li class="comment even depth-2" id="comment-106782">
+                
+		                
+		<div id="div-comment-106782" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/1a27961ada00f5caecc1b4c631e399d6.jpg" srcset="https://secure.gravatar.com/avatar/1a27961ada00f5caecc1b4c631e399d6?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-1a27961ada00f5caecc1b4c631e399d6-1" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-106782">
+                          drx11 @ 4:50 pm on December 26, 2018</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Some users have had mixed success…<br>
+<a href="https://forums.macrumors.com/threads/once-and-for-all-does-macos-mojave-work-with-fusion-drives.2143145/" rel="nofollow ugc">https://forums.macrumors.com/threads/once-and-for-all-does-macos-mojave-work-with-fusion-drives.2143145/</a></p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=106782#respond" data-commentid="106782" data-postid="46896" data-belowelement="div-comment-106782" data-respondelement="respond" aria-label="Reply to drx11">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-106702">
+                
+		                
+		<div id="div-comment-106702" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/c553282c8a0ba4f8a670ad0c398607c0.jpg" srcset="https://secure.gravatar.com/avatar/c553282c8a0ba4f8a670ad0c398607c0?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-c553282c8a0ba4f8a670ad0c398607c0-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-106702">
+                          George Rix @ 7:08 pm on December 19, 2018</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>First, I’d like to thank any and all responsible for the Rocket Yard articles, I’ve benefitted from many.<br>
+I recently upgraded from a failed 2010 21-inch iMac to a Late 2012 
+27-inch iMac. It’s an i7 with 3TB HD plus 128GB SSD, believe my, it’s an
+ upgrade!<br>
+When setting it up with the Mojave installer, I was able to use Disk 
+Utility from the installer to format it as a 3.12TB APFS Fusion drive.<br>
+After the install I mistakenly formatted my external 4TB drive APFS 
+then, of course, it wouldn’t work for Time Machine. Again, using Disk 
+Utility, I reformatted it Extended HFS+ so all is well.<br>
+My concern is that my experience with both of these uses of Disk Utility seems to be at odds with the comments in this article.<br>
+Thanks again for this excellent resource.</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=106702#respond" data-commentid="106702" data-postid="46896" data-belowelement="div-comment-106702" data-respondelement="respond" aria-label="Reply to George Rix">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		<ul class="children">
+
+		<li class="comment byuser comment-author-owc-jarrod even depth-2" id="comment-106714">
+                
+		                
+		<div id="div-comment-106714" class="comment-body"> <!-- This is the container for all comments -->
+                
+        
+            <span class="comment-column">
+              
+                <div class="comment-author vcard comment-left">
+                  <img alt="" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/a5d7a011e4b1609f3cf76548cb290346.jpg" srcset="https://secure.gravatar.com/avatar/a5d7a011e4b1609f3cf76548cb290346?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" id="grav-a5d7a011e4b1609f3cf76548cb290346-0" width="32" height="32">                </div>
+                
+                <span class="comment-right">
+                  
+                  <span class="comment-meta commentmetadata"><a href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/#comment-106714">
+                          Jarrod @ MacSales.com @ 10:29 am on December 20, 2018</a>                  </span>
+                  <br class="clear">
+                  
+                                    
+                  <span class="comment-text">
+                  <p>Thanks for reading, George!</p>
+                  </span>
+                  <br class="clear">
+                  
+                  <div class="reply">
+                  <a rel="nofollow" class="comment-reply-link" href="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/?replytocom=106714#respond" data-commentid="106714" data-postid="46896" data-belowelement="div-comment-106714" data-respondelement="respond" aria-label="Reply to Jarrod @ MacSales.com">Reply</a>                  </div>
+                
+                </span>
+                <br class="clear">
+            </span>
+            
+            
+		</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    </ul>
+    
+        
+</section>
+<!-- End list of all comments for post -->
+
+
+</section>                    </span>
+        
+        <span class="three columns">
+            <style>
+.hideYourself {display: none; }
+</style>
+
+<aside id="sidebar" role="complementary">
+<div id="primary" class="widget-area">
+<ul class="xoxo">
+<li id="blog_subscription-2" class="widget-container widget_blog_subscription jetpack_subscription_widget"><h3 class="widget-title">Subscribe via Email</h3>
+            <form action="#" method="post" accept-charset="utf-8" id="subscribe-blog-blog_subscription-2">
+				                    <div id="subscribe-text"><p>Get notified of new posts!</p>
+</div>                    <p id="subscribe-email">
+                        <label id="jetpack-subscribe-label" class="screen-reader-text" for="subscribe-field-blog_subscription-2">
+							Email Address                        </label>
+                        <input type="email" name="email" required="required" class="required" id="subscribe-field-blog_subscription-2" placeholder="Email Address">
+                    </p>
+
+                    <p id="subscribe-submit">
+                        <input type="hidden" name="action" value="subscribe">
+                        <input type="hidden" name="source" value="https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/">
+                        <input type="hidden" name="sub-type" value="widget">
+                        <input type="hidden" name="redirect_fragment" value="blog_subscription-2">
+						                        <button type="submit" name="jetpack_subscriptions_widget">
+	                        Subscribe                        </button>
+                    </p>
+				            </form>
+		
+</li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+											<li>
+					<a href="https://blog.macsales.com/60773-why-is-my-mac-hanging-when-copying-files-after-upgrading-to-macos-catalina-10-15-4/">Why Is My Mac Hanging When Copying Files After Upgrading to macOS Catalina 10.15.4?</a>
+									</li>
+											<li>
+					<a href="https://blog.macsales.com/60753-apple-announces-second-generation-iphone-se-starting-at-399/">Apple Announces Second-Generation iPhone SE Starting at $399</a>
+									</li>
+											<li>
+					<a href="https://blog.macsales.com/60567-work-from-home-essentials-illustrator-alternative-affinity-designer/">Work From Home Essentials: Illustrator Alternative – Affinity Designer</a>
+									</li>
+											<li>
+					<a href="https://blog.macsales.com/60701-how-to-set-up-a-group-facetime-call-in-macos-catalina/">How to Set up a Group FaceTime Call in macOS Catalina</a>
+									</li>
+											<li>
+					<a href="https://blog.macsales.com/60658-akitio-node-titan-egpu-for-desktop-performance-in-a-laptop/">AKiTiO Node Titan: A Game-Changing eGPU for Desktop-Class Performance in a Laptop</a>
+									</li>
+											<li>
+					<a href="https://blog.macsales.com/60650-how-jam-in-the-van-keeps-live-streams-going-with-owc/">How Jam in the Van Keeps Live Streams Going With OWC</a>
+									</li>
+											<li>
+					<a href="https://blog.macsales.com/60532-how-to-create-a-photo-slideshow-in-keynote-for-mac/">How to Create a Photo Slideshow in Keynote for Mac</a>
+									</li>
+											<li>
+					<a href="https://blog.macsales.com/60272-pro-audio-quick-tips-for-better-home-recordings/">Pro Audio: Quick Tips for Better Home Recordings</a>
+									</li>
+											<li>
+					<a href="https://blog.macsales.com/60458-work-from-home-essentials-indesign-alternative-affinity-publisher/">Work From Home Essentials: InDesign Alternative – Affinity Publisher</a>
+									</li>
+											<li>
+					<a href="https://blog.macsales.com/60503-how-to-force-the-finder-to-restart-in-macos-catalina/">How to Force the Finder to Restart in macOS Catalina</a>
+									</li>
+					</ul>
+		</li></ul>
+
+<span class="widget-title">Macs last a long time.</span>
+<span class="widget-text">Don't plunk down your hard earned money on a 
+new Mac when an upgraded Mac can run faster than a new Mac. We have the 
+best upgrades and support for Macs:</span>
+
+<span class="widget-title"><a href="https://eshop.macsales.com/shop/apple/memory/">OWC Memory</a> <span class="showSingle show-button" target="1"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/plus_sign.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/plus_sign.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/plus_sign@2x.png 2x"></span></span>
+<span id="div1" class="widget-text targetDiv" style="display: none;">The easiest and most cost effective way to get the most from your Mac. Open and create more at one time with less slowdowns.</span>
+
+<span class="widget-title"><a href="https://eshop.macsales.com/shop/SSD/OWC/">OWC SSDs</a> <span class="showSingle show-button" target="2"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/plus_sign.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/plus_sign.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/plus_sign@2x.png 2x"></span></span>
+<span id="div2" class="widget-text targetDiv" style="display: none;">SSDs
+ are up the 91 times faster than a hard drive. Unleash the true 
+potential of you Mac by upgrading to an OWC SSD. OWC Install Videos 
+guide you step-by-step so you can experience the blazing performance 
+difference an OWC SSD offers.</span>
+
+<span class="widget-title"><a href="https://eshop.macsales.com/shop/firewire/">OWC External Drives</a> <span class="showSingle show-button" target="3"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/plus_sign.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/plus_sign.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/plus_sign@2x.png 2x"></span></span>
+<span id="div3" class="widget-text targetDiv" style="display: none;">Easily
+ expand your storage with durable external drives from OWC. From 
+bus-powered portables to massive capacity desktop models, our external 
+drives are time-tested and industry trusted to provide you great 
+reliable storage whatever your needs may be.</span>
+
+<span class="widget-title"><a href="https://eshop.macsales.com/shop/optical-drives/superdrives/">OWC Optical Drives</a> <span class="showSingle show-button" target="4"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/plus_sign.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/plus_sign.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/plus_sign@2x.png 2x"></span></span>
+<span id="div4" class="widget-text targetDiv" style="display: none;">Who
+ says the optical drive is dead? Optical storage offers a great way to 
+archive data long term, and Blu-ray media offers a tremendous amount of 
+storage in a single disc. Watch Blu-ray movies to experience near studio
+ master image quality.</span>
+
+<span class="widget-title"><a href="https://eshop.macsales.com/Service/contact/">Got questions? OWC can help.</a> <span class="showSingle show-button" target="5"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/plus_sign.png" srcset="https://blog.macsales.com/wp-content/themes/RocketYard/images/plus_sign.png, https://blog.macsales.com/wp-content/themes/RocketYard/images/plus_sign@2x.png 2x"></span></span>
+<span id="div5" class="widget-text targetDiv" style="display: none;">Our
+ award-winning U.S. based customer service is at the ready to help you 
+with any upgrade questions you may have. We're available online and on 
+the phone 24/7. Say hello today and find out what your Mac can do.</span>
+
+</div>
+</aside>
+
+
+        </span>
+
+    </span> <!-- Ends .content -->
+    
+</section>
+            
+<div class="clear"></div>
+</div>
+<footer id="footer" role="contentinfo">
+    <span class="left_column">
+        <img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/rocket-yard-logo-2x.png" width="230" height="54"><br>
+        <span class="left_cont">
+            <ul>
+                <li><a href="https://blog.macsales.com/category/industry-news">Industry News</a></li>
+                <li><a href="https://blog.macsales.com/category/product-spotlight">Product Spotlight</a></li>
+                <li><a href="https://blog.macsales.com/category/testing-lab">Testing Lab</a></li>
+                <li><a href="https://blog.macsales.com/category/app-review">App Review</a></li>
+                <li><a href="https://blog.macsales.com/brand-downloads">Brand Assets</a></li>
+                <li><a href="https://blog.macsales.com/category/owc-news">News</a></li>
+                <li><a href="https://blog.macsales.com/category/tech-tips">Tech Tips</a></li>
+                <li><a href="https://blog.macsales.com/category/procorner">Pro Corner</a></li>
+                <li><a href="https://blog.macsales.com/category/owc-radio">OWC RADiO</a></li>
+                <li><a href="https://blog.macsales.com/wp-login.php">Log in</a></li>
+            </ul>
+        </span>
+
+        <br><br><a href="https://blog.macsales.com/category/the-other-world">The Other World Comic Archives</a>
+
+        <!-- Newsletter signup page - Commented out until we are prepared for the weekly digest email -->
+        <!-- <br /><br /><a href="/subscribe">Sign-up for the OWC Blog Newsletter</a> -->
+
+    </span>
+
+    <span class="right_column">
+        <a href="https://eshop.macsales.com/"><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/footer-logo-owc.png" width="295" height="61"></a>
+        <span class="right_cont">
+            <span class="title">Quality products. Expert support. Since 1988.</span>
+            Get the best performance and extend the usefulness of your Mac with OWC. High-quality meets high-performance with <a href="http://eshop.macsales.com/shop/apple/memory/">OWC Memory</a>, <a href="https://eshop.macsales.com/shop/SSD/OWC/">OWC SSDs</a> (we have upgrades for Air and Retina too!), <a href="https://eshop.macsales.com/shop/external-drives/">OWC Drives</a>, <a href="https://eshop.macsales.com/shop/Thunderbolt/">Thunderbolt drives and accessories</a>, <a href="https://eshop.macsales.com/shop/optical-drives/superdrives/">optical drives</a>, <a href="https://eshop.macsales.com/shop/apple_laptop/batteries/">batteries</a> and more. Protect and enhance <a href="https://eshop.macsales.com/shop/Apple/iPhone_Accessories">iPhone</a>, <a href="https://eshop.macsales.com/shop/Apple/iPad_Accessories">iPad</a>, and <a href="https://eshop.macsales.com/shop/Apple/iPod_Accessories">iPod</a> with cases, headphones, screen protectors, batteries, stands and more.
+        </span>
+    </span>
+
+    <div class="clear"></div>
+
+</footer>
+</div>
+<!-- ngg_resource_manager_marker --><script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/anti-spam.js"></script>
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/wpgroho.js"></script>
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/wp-embed.js"></script>
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/comment-reply.js"></script>
+<script async="async" type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/form.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/sharing.js"></script>
+<script type="text/javascript">
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+</script>
+	<div style="display:none">
+	<div class="grofile-hash-map-fe187e4aaac510d06ef51b04e2cd5d75">
+	</div>
+	<div class="grofile-hash-map-01120f5a2e691c1d3d1c468fcf6fd490">
+	</div>
+	<div class="grofile-hash-map-a517bced5352b40586756f184244f606">
+	</div>
+	<div class="grofile-hash-map-884ca2fc965ae3cd26760c04452762ca">
+	</div>
+	<div class="grofile-hash-map-f13d58c506e4416e07a4c89427a8d1d7">
+	</div>
+	<div class="grofile-hash-map-e50b65019c6e9a4ce9f536a7b297d924">
+	</div>
+	<div class="grofile-hash-map-f625ac4ce850fdbfea16133ca4df2af3">
+	</div>
+	<div class="grofile-hash-map-5fd69e7c668f61cc717335f6be2eeef9">
+	</div>
+	<div class="grofile-hash-map-cd185d74b51d39467a829fff1139d2ac">
+	</div>
+	<div class="grofile-hash-map-6cd708bb80a94db1ed3965bbf7e0a27b">
+	</div>
+	<div class="grofile-hash-map-213da02c3a4d99fee8139d58631b348b">
+	</div>
+	<div class="grofile-hash-map-3a6cebbde80f2a85ccef943ecf0b9c0c">
+	</div>
+	<div class="grofile-hash-map-45e2a0fda32cc5ded049e2c180dc4596">
+	</div>
+	<div class="grofile-hash-map-7c5309319c963af139e573a2b627db89">
+	</div>
+	<div class="grofile-hash-map-aab35752676a2291e481e6cdfcbbe28e">
+	</div>
+	<div class="grofile-hash-map-1e6d08b322f14bef215cf2dda844b369">
+	</div>
+	<div class="grofile-hash-map-86694e273ce2832200ccf9ad02287797">
+	</div>
+	<div class="grofile-hash-map-c45e97d8552e84b7f4771bd34307847c">
+	</div>
+	<div class="grofile-hash-map-223dff642ea2dbbc1960b95c542abe30">
+	</div>
+	<div class="grofile-hash-map-d1aef05ddead815bf08df86d368a2d02">
+	</div>
+	<div class="grofile-hash-map-b91c5482767735103ad535fb919a3435">
+	</div>
+	<div class="grofile-hash-map-9f2545a3285412750b3bf825ebb3fd3f">
+	</div>
+	<div class="grofile-hash-map-61bbfb988fd48647cd145cc8cebfd29e">
+	</div>
+	<div class="grofile-hash-map-9499f2772800f10edcb07b8f69a32e98">
+	</div>
+	<div class="grofile-hash-map-5a60cc7a1ae062ead392cebb46caac71">
+	</div>
+	<div class="grofile-hash-map-fb2e1b955bc5c2696a7c14a2704d21c9">
+	</div>
+	<div class="grofile-hash-map-60c0a04809a239fb8d64470e73fbe740">
+	</div>
+	<div class="grofile-hash-map-99de0a3f33cfa0460b5e9c9307bc621b">
+	</div>
+	<div class="grofile-hash-map-ff00487f077c1f192b73a3de3efa4770">
+	</div>
+	<div class="grofile-hash-map-23a223f191fd52547193d870c3e08884">
+	</div>
+	<div class="grofile-hash-map-1534ab968381161972e9f12e05cc8961">
+	</div>
+	<div class="grofile-hash-map-1a27961ada00f5caecc1b4c631e399d6">
+	</div>
+	<div class="grofile-hash-map-a0e8f58fe941042f37246cfdb4484565">
+	</div>
+	<div class="grofile-hash-map-c553282c8a0ba4f8a670ad0c398607c0">
+	</div>
+	<div class="grofile-hash-map-a5d7a011e4b1609f3cf76548cb290346">
+	</div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/blog.macsales.com\/46896-how-to-revert-a-drive-from-apfs-back-to-hfs\/":46896};
+	</script>
+							
+<script type="text/javascript" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/e-202016.js" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.2.3',blog:'5439935',post:'46896',tz:'-5',srv:'blog.macsales.com'} ]);
+	_stq.push([ 'clickTrackerInit', '5439935', '46896' ]);
+</script>
+
+<span class="subfooter">
+Prices, terms, and availability subject to change without notice. Not 
+responsible for typographical, technical, or descriptive errors of 
+products herein.<br>
+OWC is on-site wind turbine powered at 8 Galaxy Way, Woodstock, IL 60098 | 1-800-275-4576 | +1-815-338-8685 (International)<br>
+All Rights Reserved, Copyright 2018, OWC – Since 1988
+</span>
+
+
+		<script>
+		function hasHtml5Validation () {
+		  return typeof document.createElement('input').checkValidity === 'function';
+		}
+
+		if (hasHtml5Validation()) {
+		  jQuery('.validate-form').submit(function (e) {
+		    if (!this.checkValidity()) {
+		      e.preventDefault();
+			  txt = "Value too small";
+		      jQuery(this).addClass('invalid');
+		     jQuery('#status').html('Please enter a valid email address.');
+		  } else {
+
+		      jQuery('#status').html('Your email has been successfully sent.');
+		    }
+		  });
+		}
+		</script>
+
+
+
+
+
+
+		<script>
+		    // Get the modal
+		    var modal = document.getElementById('newsletter-modal');
+
+		    // Get the button that opens the modal
+		    var btn = document.getElementById("myBtn");
+
+		    // Get the <span> element that closes the modal
+		    var span = document.getElementsByClassName("close")[0];
+
+		    // When the user clicks on the button, open the modal
+		    btn.onclick = function() {
+		        modal.style.display = "block";
+		    }
+
+		    // When the user clicks on <span> (x), close the modal
+		    span.onclick = function() {
+		        modal.style.display = "none";
+		    }
+
+		    // When the user clicks anywhere outside of the modal, close it
+		    window.onclick = function(event) {
+		        if (event.target == modal) {
+		            modal.style.display = "none";
+		        }
+		    }
+		</script>
+
+
+
+<div id="sharing_email" style="display: none;">
+		<form action="/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email">
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name">
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email">
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" size="25" autocomplete="off" title="This field is for validation and should not be changed">
+			
+			<img style="float: right; display: none" class="loading" src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/loading.gif" alt="loading" width="16" height="16">
+			<input type="submit" value="Send Email" class="sharing_send">
+			<a rel="nofollow" href="#cancel" class="sharing_cancel" role="button">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div><img src="How%20to%20Revert%20a%20drive%20from%20APFS%20back%20to%20HFS+_files/g.gif" alt=":)" id="wpstats" width="6" height="5"></body></html>

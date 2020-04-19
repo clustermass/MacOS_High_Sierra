@@ -1,0 +1,238 @@
+/*  #Mobile (Portrait)
+================================================== */
+
+    /* Note: Design for a width of 320px */
+
+    @media only screen and (max-width: 767px) {
+        body { background: #fff; }
+
+        .container { width: 100%; }
+        .container .columns,
+        .container .column { margin: 0; }
+
+        .container .three.columns,
+        .container .four.columns,
+        .container .eight.columns,
+        .container .nine.columns,
+        .container .twelve.columns,
+        .container .one-third.column,
+        .container .two-thirds.column  { width: 300px; }
+
+		.header .wrapper .one-third.column { text-align: center; display: block; width: 100%; margin-top: 34px; }
+        .header .wrapper .two-thirds.column { display: none; }
+
+/* 320px overrides */
+
+/* Hide Social Icon Span at the top of the page */
+.social { display: block; position: absolute; top: 128px; left: 4px; width: 258px; }
+    .social ul li { float: left; margin: 0 4px; display: inline-block; }
+    .social_image { width: 34px; height: 34px; }
+
+.header { background: url(images/header.png); display: block; height: 125px; }
+    .header .wrapper { display: block; overflow: hidden; padding: 0px; }
+    .header .subline { display: none; }
+
+.one-third.column a img { width: 100%; height: auto; max-width: 300px; }
+
+/* Hide main nav in mobile view */
+.nav { display: none; }
+
+/* Beginning of mobile only dropdown menu */
+#mobile { background-color:#000000; display:block; box-shadow: 0 0 5px 2px rgba(0,0,0,0.3); }
+/* Top black bar that holds the toggle button */
+#mobile #toggle-bar { line-height:44px; height:44px; }
+/* Toggle button ("Navicon") */
+#mobile .navicon { float: right; height: 4px; width: 30px; margin: 12px 10px 7px 10px; border-top: 12px double #FFF; border-bottom: 4px solid #FFF; font-size:0; }
+/* The dropdown menu */
+#mobile ul li { clear:both; list-style:none; font-family: Arial, sans-serif; border-top: 1px solid #999999; }
+#mobile ul li a { display:block; margin:2px 0; padding:9px 0 9px 8px; color: #ffffff; text-decoration: none; }
+
+#search { display: none; }
+    #search ul li { display: none; }
+
+#mobile_search { width: 300px; margin: 15px auto 0px auto; display: block; }
+    #mobile_search ul li { display: block; }
+    .s { width: 243px; font-size: 16px; }
+    #searchsubmit { display: block; float: right; }
+
+.content { margin: 0px auto; overflow: hidden; width: 300px; }
+.content img { width: 80%; height: auto; float: none; margin: 0 auto; max-height: initial; max-width: initial; }
+
+    /* Featured Post - 1 Post with text to the right */
+    .content .entry-img, .content .feat-img { width: 300px; height: auto; outline: none; margin: 0 auto; overflow: hidden; }
+    .content .entry-title a { margin-top: 20px; font-size: 19px; }
+    .content .entry-subtitle { font-size: 14px; line-height: 160%; border-bottom: 1px solid #ccc; padding-bottom: 30px; }
+    .content .eight.columns .entry-subtitle p { margin-bottom: 0px; }
+
+    /* Subfeatured Postings - 3 in a horizontal row */
+    .content .feat-cont { display: block; }
+
+    /* Recent Postings Listing - 4 in a horizontal row */
+    .content .recent-cont { display: block; margin-top: 10px; border-bottom: 1px solid #ccc; }
+    .content .recent-img { width: 300px; height: auto; outline: none; margin: 0 auto; }
+    .content .recent-cont-title a { font-size: 19px; }
+    .content .recent-cont-subtitle { font-size: 14px; margin-bottom: 15px; }
+
+    /* This is an alternate view for the home page on mobile */
+    /*
+    .content .recent-cont { display: block; margin-top: 10px; border-bottom: 1px solid #ccc; }
+    .content .recent-img { width: 100px; height: auto; float: left; margin-right: 15px; outline: none; margin-top: 20px; }
+    .content .recent-cont-title a { font-size: 19px; float: right; width: 285px; }
+    .content .recent-cont-subtitle { font-size: 14px; float: right; width: 285px; margin-bottom: 10px; }
+    */
+
+    /* Specific Category Pages */
+    .content .category-cont { display: block; margin-top: 0px; }
+    .content .category-title { margin-top: 0px; }
+    .content .category-cont-title a { font-size: 16px; }
+    .content .category-cont-subtitle { font-size: 14px; }
+
+	/* Content for Single Article Posting Listings */
+    .content .single-img { margin: 15px 0 5px 0px; float: none; display: block; }
+    .content .single-content { overflow: hidden; margin: 10px 0px 0px 0px; }
+    .content .single-content img { display: block; }
+    .content .single-title a { font-size: 20px; }
+    .content .wp-caption { width: 100% !important; } /* TODO: Find a way without using !important */
+
+    /* The Other World Section On Homepage */
+    .other-banner { display: block; margin: 15px 0px 30px 0px; box-sizing: border-box; border-right: 2px solid #000; overflow: hidden; }
+    .twelve.columns .recent-cont img { width: 200%; }
+
+    /* Various Titles - Pages, Categories, and The Other World */
+    .content .page-title { margin: 10px 0px 0px 0px; }
+    .content .other-title a { margin: 0px 0 3px; }
+    .content .search-title { margin: 10px 0px 10px 0px; }
+
+    /* Search Pages */
+    .nine.columns article.post { border-bottom: 1px solid #ccc; }
+    .content .search-img { width: 300px; height: auto; margin: 5px 0px 20px 0; outline: none; }
+    .content .search-cont-title a { font-size: 19px; margin-top: 10px; }
+    .content .search-cont-subtitle { font-size: 14px; padding-bottom: 10px; }
+
+    .content .entry-content { line-height: 140%; }
+
+    /* Comment form section and input fields */
+    #comments { width: 100%; }
+        .content .comment-reply-title { font-size: 30px; font-family: Arial, sans-serif; font-style: italic; color: #ff6251; text-decoration: underline; display: block; margin: 20px 0 20px 0; font-weight: 400; }
+        .content .comment-form label { display: block; font-size: 13px; padding-bottom: 5px; color: #666666; font-weight: 700; font-family: Arial, sans-serif; padding-left: 2px; }
+        .comment-form textarea { font-size: 16px; width: 96%; padding: 4px; }
+        .content .comment-form input { font-size: 13px; width: 96%; }
+        .content .comment-form-author input, .content .comment-form-email input { padding: 4px; font-size: 16px; }
+        .content .column_33 { width: 100%; display: inline; float: left; padding-bottom: 20px; }
+        .content .comment-form-comment { display: inline-block; width: 100%; }
+        .content .comment-form-email { padding-top: 8px; }
+        p.form-submit { margin-top: 0; float: none;}
+        .content .comment-left { float: left; display: inline; width: 32px; margin-right: 10px; }
+        .content .comment-right { float: left; display: inline; max-width: 85%; }
+        #submit { background: #0099ff; border-radius: 5px; width: 100%; border: none; color: #ffffff; font-size: 15px; font-weight: 700; -webkit-appearance: none;}
+
+    /* Comment listing section - Avatar, Meta Information, and Comment Display. See functions.php for customizations */
+    .content .comments { margin: 50px 0 30px; }
+    .content .comments .children { padding-left: 10px; }
+    .content .comments a { color: #0099ff; font-family: Arial, sans-serif; font-weight: 700; font-size: 14px; }
+    .content .comment-body { display: block; margin-bottom: 20px; }
+    .content .comment-column { display: block; }
+    .content .comment-author.vcard { display: block; width: 32px; height: 32px; }
+    .content .comment-meta.commentmetadata { display: block; float: left; }
+    .content .comment-meta.commentmetadata a { color: #555555; font-weight: 700; font-size: 16px; font-family: Arial, sans-serif; text-decoration: none; }
+    .content .comment-awaiting-moderation { display: block; float: left; font-family: Arial, sans-serif; font-size: 14px; line-height: 150%; color: #0099ff; font-weight: 700; }
+    .content .comment-text { display: block; float: left; font-family: Arial, sans-serif; font-size: 14px; line-height: 150%; }
+    .content .comment-text p { margin: 10px 0 3px; }
+    .content .reply { margin-bottom: 5px; }
+
+ /* This is for the OWC Radio Podcast section on the homepage */
+.radio { height: auto; margin: 10px 0px 20px; padding: 10px 0px; background-position: -220px 0px; }
+    .radio .wrapper { width: 80%; padding: 10px 10px 10px;}
+    .radio .title { display: block; font-size: 24px; font-family: Arial, sans-serif; font-weight: 700; color: #ffffff; line-height: 140%; }
+    .radio .cont { display: block; font-size: 14px; color: #ffffff; font-family: Arial, sans-serif; line-height: 140%; }
+
+/* Everything contained in the footer for every page. Most gets thrown out in mobile section */
+#footer { width: 100%; }
+    #footer .left_column { width: 84%; border-right: none; border-bottom: 1px solid #ffffff; padding: 8%; }
+        #footer .left_cont { width: auto;}
+        #footer .left_cont ul li { width: 130px; }
+    #footer .right_column { width: 84%; padding: 8%; }
+    #footer .right_cont .title { line-height: 130%; }
+
+    /* Final text at the bottom of the page beneath the footer */
+    .subfooter { width: 84%; }
+
+    }
+
+
+/* #Mobile (Landscape)
+================================================== */
+
+    /* Note: Design for a width of 480px */
+
+    @media only screen and (min-width: 480px) and (max-width: 767px) {
+        .container .three.columns,
+        .container .four.columns,
+        .container .eight.columns,
+        .container .nine.columns,
+        .container .twelve.columns,
+        .container .one-third.column,
+        .container .two-thirds.column { width: 400px; }
+
+		.header .wrapper .one-third.column { margin-top: 0px; }
+
+/* 480px overrides */
+
+.social {  width: 300px; }
+    .social ul li { margin: 0 7px; }
+
+    .header .wrapper { padding: 30px 40px 0 14px; }
+
+.one-third.column a img { max-width: 320px; }
+
+#mobile_search { width: 400px; }
+    .s { width: 344px; }
+
+.content { width: 400px; }
+
+    /* Various Titles - Pages, Categories, and The Other World */
+    .content .page-title { margin: 10px 0px 20px 0px; }
+
+    /* Search Pages */
+    .nine.columns article.post { border-bottom: 1px solid #ccc; }
+    .content .search-img { width: 100px; height: auto; float: left; margin: 25px 15px 0px 0px; outline: none; }
+    .content .search-cont-title a { font-size: 19px; float: right; width: 285px; margin-top: 20px; }
+    .content .search-cont-subtitle { font-size: 14px; float: right; width: 285px; padding-bottom: 20px; }
+
+    /* Comment form section and input fields */
+    #comments { width: 100%; }
+    .comment-form textarea { font-size: 13px; width: 96%; padding: 4px; }
+    .content .comment-form input { font-size: 13px; width: 96%; }
+    .content .column_33 { width: 100%; display: inline; float: left; padding-bottom: 20px; }
+    .content .comment-form-comment { display: inline-block; width: 100%; }
+    p.form-submit { margin-top: 0; float: none;}
+    .content .comment-left { float: left; display: inline; width: 32px; margin-right: 10px; }
+    .content .comment-right { float: left; display: inline; max-width: 85%; }
+    #submit { background: #0099ff; border-radius: 5px; width: 100%; border: none; color: #ffffff; font-size: 15px; font-weight: 700; -webkit-appearance: none;}
+
+    /* Comment listing section - Avatar, Meta Information, and Comment Display. See functions.php for customizations */
+    .content .comments { margin: 50px 0 30px; }
+    .content .comments .children { padding-left: 10px; }
+    .content .comments a { color: #0099ff; font-family: Arial, sans-serif; font-weight: 700; font-size: 14px; }
+    .content .comment-body { display: block; margin-bottom: 20px; }
+    .content .comment-column { display: block; }
+    .content .comment-author.vcard { display: block; width: 32px; height: 32px; }
+    .content .comment-meta.commentmetadata { display: block; float: left; }
+    .content .comment-meta.commentmetadata a { color: #555555; font-weight: 700; font-size: 16px; font-family: Arial, sans-serif; text-decoration: none; }
+    .content .comment-awaiting-moderation { display: block; float: left; font-family: Arial, sans-serif; font-size: 14px; line-height: 150%; color: #0099ff; font-weight: 700; }
+    .content .comment-text { display: block; float: left; font-family: Arial, sans-serif; font-size: 14px; line-height: 150%; }
+    .content .comment-text p { margin: 10px 0 3px; }
+    .content .reply { margin-bottom: 5px; }
+
+/* Everything contained in the footer for every page. Most gets thrown out in mobile section */
+#footer { width: 100%; }
+    #footer .left_column { width: 90%; border-right: none; border-bottom: 1px solid #ffffff; padding: 30px 5%; }
+        #footer .left_cont ul li { width: 155px; }
+    #footer .right_column { width: 90%; padding: 30px 5%; }
+    #footer .right_cont .title { line-height: 130%; }
+}
+
+
+@media only screen and (max-width: 767px){
+.feat-cont{display:block}
+}

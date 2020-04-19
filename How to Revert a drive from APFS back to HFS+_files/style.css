@@ -1,0 +1,396 @@
+/*
+Theme Name: RocketYard - The OWC Blog
+Theme URI: http://blog.macsales.com/
+Description: A fully responsive Wordpress theme for the Macsales.com blog.
+Version: 0.9.9
+Author: OWC Design Center
+Author URI: http://www.macsales.com/
+Copyright 2014, Other World Computing
+Last Revision: 5/14/2014
+*/
+	
+	
+
+
+/* Table of Contents
+==================================================
+    $Base 990 Grid
+    $Mobile (Portrait - 480px)
+    $Mobile (Landscape - 320px)
+    $Clearing */
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,u,center,dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,section,summary,time,mark,audio,video{font-size:100%;font:inherit;padding:0;border:0;margin:0;vertical-align:baseline;}
+
+body{line-height:1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+strong { font-weight: 700 !important; }
+
+
+h1 {font-size:18px; margin:0px 0px 5px 0px; font-weight:bold; line-height:135%; font-family: Georgia, serif; }
+h2 {font-size:16px; margin:0px 0px 5px 0px; font-weight:600; line-height:135%; font-family: Georgia, serif; }
+h3 {font-size:16px; margin:0px 0px 5px 0px; font-weight:bold; line-height:135%; font-family: Georgia, serif; }
+h4 {font-size:12px; margin:0px 0px 5px 0px; font-weight:bold; line-height:135%; font-family: Georgia, serif; }
+h5 {font-size:10px; margin:0px 0px 15px 0px; font-weight:normal; line-height:120%; color:#666666; font-style:italic; font-family: Helvetica, Arial, sans-serif;}
+h6 {font-size:8px;  margin:0px 0px 15px 0px; font-weight:normal; line-height:120%; color:#666666; font-style:italic; font-family: Helvetica, Arial, sans-serif; }
+
+ol,ul{list-style:none}
+textarea { resize: none; border: 1px solid #bbb; }
+
+b { display: inline; font-family: Helvetica, Arial, serif; font-weight: 700; }
+
+blockquote,q{quotes:none}
+
+blockquote:before,blockquote:after,q:before,q:after { content:''; content:none; }
+
+table { border-collapse:collapse; border-spacing:0; }
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{ display:block; }
+.clear{clear:both}
+.sticky{}
+.bypostauthor{}
+.wp-caption{}
+.wp-caption-text{}
+.gallery-caption{}
+.archive-meta { display: none; }
+.alignright{ float: right; }
+.alignleft{ float: left; }
+.aligncenter,div.aligncenter{
+    display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+img.alignleft {
+    padding: 5px;
+    margin: 0 7px 2px 0;
+    display: inline;
+}
+
+img.alignright {
+    padding: 5px;
+    margin: 0 0 2px 7px;
+    display: inline;
+}
+img.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+section .single-content img {
+    border:0px;
+    padding:5px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+iframe, embed { max-width: 100%; }
+
+
+/* $Base 990 Grid
+ ================================================= */
+
+    .container                                  { position: relative; width: 990px; margin: 0 auto; padding: 0; background: #ffffff; }
+    .container .column,
+    .container .columns                         { float: left; display: inline; margin-left: 26px; }
+    .row                                        { margin-bottom: 20px; }
+
+    /* Base Grid */
+    .container .three.columns                   { width: 208px; }
+    .container .four.columns                    { width: 286px; }
+    .container .five.columns                    { width: 364px; }
+    .container .six.columns                     { width: 442px; }
+    .container .seven.columns                   { width: 520px; }
+    .container .eight.columns                   { width: 598px; }
+    .container .nine.columns                    { width: 676px; }
+    .container .twelve.columns                  { width: 910px; }
+
+    .container .one-third.column                { width: 286px; }
+    .container .two-thirds.column               { width: 584px; }
+
+    .header .wrapper .one-third.column          { margin-top: 11px; }
+    .header .wrapper .two-thirds.column         { margin-left: 40px; margin-top: 40px; }
+
+
+
+/* Main styling
+================================================== */
+
+body { margin: 0; background: #cbdeeb; }
+
+/* Social Icon Styles */
+.social { display: block; position: absolute; top: 15px; left: 685px; width: 285px;}
+    .social ul li { float: left; margin: 0 5px; display: inline-block; }
+
+    /* Add hover effect on social icons */
+    .social_image { position:relative; width:37px; height:37px; display: block; }
+    .social_image img { width:100%; vertical-align:top; }
+    .social_image:after { content:'\A'; position:absolute; width:100%; height:100%; top:0; left:0; background:rgba(0,0,0,0.5); opacity:0; transition: all 0.5s; -webkit-transition: all 0.5s; border-radius: 22px; }
+    .social_image:hover:after { opacity:1; }
+
+/* Header Styles */
+.header { background: url(images/header.png); display: block; height: 125px; }
+    .header .wrapper { display: block; padding: 25px 40px 0 14px; }
+    .header .subline { color: #000000; font-size: 16px; display: block; padding-top: 5px; }
+
+.nav { background: #17396c; display: block; padding: 15px 40px 32px 40px; }
+    .nav ul li { float: left; margin: 0 20px; display: inline-block; color: #ffffff; }
+    .nav ul li a { text-decoration: underline; color: #ffffff; font-size: 18px; }
+
+
+#mobile { display: none; }
+
+#menu_fixed { display: none; z-index: 1; }
+    #menu_fixed.nav_fixed { position: fixed; top: 0; }
+    .nav_fixed { background: #000000; display: block; padding: 15px 40px 15px 40px; width: 910px; }
+    .nav_fixed ul li { float: left; margin: 0 19px; display: inline-block; color: #ffffff; font-size: 14px; }
+    .nav_fixed ul li a { text-decoration: underline; color: #ffffff; font-size: 16px; }
+
+#search { padding: 10px 25px 20px; margin: 5px 0 10px; }
+    #search img { float: left; display: inline-block; margin-top: -8px; }
+    #search ul li { float: left; padding: 0 15px; display: inline-block; font-size: 13px; }
+      #search ul li input { -webkit-appearance: none; -webkit-border-radius:0px; border-radius: 0; } /* Remove rounded corners from search box */
+    #search ul li a { display: inline-block; padding: 3px 0; color: #0099ff; text-decoration: none; font-size: 16px; }
+
+    .s{ margin: 0; padding: 4px 15px; width: 227px; height: 16px; font-family: Arial, Helvetica, sans-serif; font-size:14px; color:#666666; border:1px solid #000000; border-right:0px; -webkit-appearance: none; -webkit-border-radius:0px; border-radius: 0; }
+    #searchsubmit { margin: 0 0 0 -4px; padding: 0; width:26px; height:26px; font-family: Arial, Helvetica, sans-serif; font-size:14px;
+        cursor: pointer; text-align: center; border: solid 1px #000000; border-right:0px; background: #000 url('./images/search.png'); background-size: contain; -webkit-appearance: none; -webkit-border-radius:0px; border-radius: 0; }
+    /* Fixes submit button height problem in Firefox */
+    #searchsubmit::-moz-focus-inner { border: 0; }
+
+#mobile_search { display: none; }
+    #mobile_search ul li { display: none; }
+
+@media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    .s { height: 16px; }
+}
+
+
+/* All class fonts are organized here to enable a quicker change of fonts and sizes */
+
+#search ul li { font-family: 'Titillium Web', Arial, sans-serif; font-weight: 700; font-style: italic; }
+.nav ul li, .nav ul li a, .header .subline { font-family: 'Titillium Web', Arial, sans-serif; font-weight: 600; font-style: italic; }
+
+
+.content .entry-subtitle, .content .feat-cont-subtitle, .content .recent-cont-subtitle, .content .category-cont-subtitle, .content .search-cont-subtitle, .content .single-content, .subfooter
+{ font-family: Helvetica, Arial, sans-serif; font-weight: 400; }
+.content .entry-title a, .content .feat-cont-title a, .content .recent-cont-title a, .content .category-cont-title a, .content .single-title a, .content .page-title, .content .other-title a, .content .search-title, .content .search-cont-title a
+{ font-family: Georgia, serif; font-weight: 700; }
+
+
+.content .entry-content
+{ font-family: 'Arial', sans-serif; font-weight: 400; }
+.content .tag-title, .content .tag-links, .content .tag-links a, .content .entry-title
+{ font-family: 'Arial', sans-serif; font-weight: 700;}
+
+
+.content { margin: 10px 40px 10px 14px; display: block; }
+    .content i { display: inline; font-family: Helvetica, Arial, sans-serif; font-style: italic; font-weight: 400; }
+    .content img { max-width: 100%; max-height: 100%; vertical-align: middle; }
+    .content p a { color: #0099ff; }
+    .content p a:hover { color: #015eab; }
+    .content .helper { display: inline-block; height: 100%; vertical-align: middle; }
+
+    /* Featured Post - 1 Post with text to the right */
+    .content .entry-img { width: 286px; height: 325px; overflow: hidden; display: block; outline: 1px solid #ccc; text-align:center; font: 0/0 a; }
+    .content .entry-title a { display: block; margin-top: 0px; margin-bottom: 5px; line-height: 130%; color: #000000; font-size: 35px; text-decoration: none; }
+    .content .entry-subtitle { display: block; margin-top: 0px; line-height: 150%; color: #333333; font-size: 16px; }
+
+    /* Subfeatured Postings - 3 in a horizontal row */
+    .content .feat-cont { display: block; margin-top: 30px; }
+    .content .feat-img { width: 286px; height: 120px; padding: 10px 0px; overflow: hidden; display: block; outline: 1px solid #ccc; text-align:center; font: 0/0 a; }
+    .content .feat-cont-title a { display: block; margin-top: 20px; margin-bottom: 5px; line-height: 130%; color: #000000; font-size: 22px; text-decoration: none; }
+    .content .feat-cont-subtitle { display: block; margin-top: 5px; line-height: 160%; color: #333333; font-size: 14px; }
+
+    /* Recent Postings Listing - 4 in a horizontal row */
+    .content .recent-cont { display: block; margin-top: 10px; }
+    .content .recent-img { width: 190px; height: 190px; overflow: hidden; display: block; outline: 1px solid #ccc; text-align:center; font: 0/0 a; }
+    .content .recent-cont-title a { display: block; margin-top: 20px; line-height: 140%; color: #000000; font-size: 16px; text-decoration: none; }
+    .content .recent-cont-subtitle { display: block; margin-top: 5px; line-height: 155%; color: #333333; font-size: 14px; }
+
+    /* Specific Category Pages */
+    .content .category-cont { display: block; margin-top: 15px; }
+    .content .category-title { display: block; margin-top: 5px; font-size: 24px; color: #0099ff; font-family: Arial, sans-serif; font-weight: 700; font-style: italic; }
+    .content .category-cont-title a { display: block; margin: 10px 0 5px; line-height: 140%; color: #000000; font-size: 16px; text-decoration: none; }
+    .content .category-cont-subtitle { display: block; line-height: 140%; color: #333333; font-size: 14px; margin: 0px 0px 30px 0px; }
+
+    /* Various Titles - Pages, Categories, and The Other World */
+    .content .page-title { display: block; margin: 10px 0px 20px 26px; line-height: 130%; color: #000000; font-size: 22px; text-decoration: none; border-bottom: 1px solid #ccc; }
+        .content .page-title a { color: #000000; text-decoration: none; }
+    .content .other-title a { display: none; margin: 10px 0 3px; line-height: 130%; color: #000000; font-size: 24px; text-decoration: none; }
+    .content .search-title { display: block; margin: 10px 0px 20px 26px; line-height: 130%; color: #000000; font-size: 22px; font-style: italic; border-bottom: 1px solid #ccc; }
+    .content .search-title .grey { color: #999; font-weight: 400; }
+
+    /* Search Pages */
+    .content .search-img { width: 190px; height: 190px; margin: 5px 20px 15px 0; overflow: hidden; display: block; float: left; outline: 1px solid #ccc; text-align:center; font: 0/0 a; }
+    .content .search-cont-title a { display: block; padding-bottom: 7px; line-height: 140%; color: #000000; font-size: 19px; }
+    .content .search-cont-subtitle { display: block; line-height: 160%; color: #666666; font-size: 14px; }
+
+    /* Content for Single Article Posting Listings */
+    .content .single-img { max-height: 300px; width: auto; overflow: hidden; display: inline-block; float: right; margin: 15px 0 5px 20px; text-align:center; font: 0/0 a; }
+    .content .single-title a { display: block; margin: 0px 0px 5px 0px; padding-bottom: 5px; line-height: 130%; color: #000000; font-size: 35px; text-decoration: none; }
+    .content .single-content { display: block; max-width: 100%; margin: 20px 0 0px; line-height: 150%; color: #333333; font-size: 16px; }
+    .content .single-content ul { margin: 5px 0 10px 30px; list-style: square; }
+    .content .single-content ul a { color: #0099ff; }
+    .content .entry-date, .content .entry-date a, .content .meta-sep { font-family: Georgia, serif; font-style: italic; color: #444444; font-size: 15px; }
+
+    /* Tags' styling at bottom of postings */
+    .content .entry-footer { display: block; margin-top: 10px; }
+    .content .tag-title { color: #000000; font-size: 18px; font-style: italic; }
+    .content .tag-links { color: #0099ff; font-size: 15px; font-style: italic; line-height: 160%; }
+    .content .tag-links a { color: #0099ff; font-size: 15px; font-style: italic; line-height: 130%; }
+    .content .entry-meta { line-height: 140%; }
+    div.sharedaddy h3.sd-title { font-size: 11pt; }
+
+    /* Comment form section and input fields */
+    .content .comment-title { font-size: 30px; font-family: Arial, sans-serif; font-style: italic; color: #ff6251; text-decoration: underline; display: block; margin: 20px 0 40px 0; font-weight: 400; }
+    .content .comment-reply-title { font-size: 30px; font-family: Arial, sans-serif; font-style: italic; color: #ff6251; text-decoration: underline; display: block; font-weight: 400; }
+    .content .comment-form-author, .content .comment-form-comment { margin-top: 0; }
+    .content .comment-form label { display: block; font-size: 13px; padding-bottom: 5px; color: #666666; font-weight: 700; font-family: Arial, sans-serif; padding-left: 2px; }
+    .content .comment-form input { font-size: 13px; width: 200px; }
+    .comment-form textarea { font-size: 13px; width: 330px; -webkit-appearance: none; border-radius: 0; border: 1px solid #4c4c4c; }
+
+    .content .comment-form-author input, .content .comment-form-email input { padding: 4px; -webkit-appearance: none; border-radius: 0; border: 1px solid #4c4c4c; }
+    .content .column_33 { width: 33%; display: inline; float: left; padding-bottom: 20px; }
+    .content .comment-form-comment { display: inline-block; }
+    .content .comment-form-email { padding-top: 8px; }
+    p.form-submit { margin-top: 0; }
+    p.logged-in-as { font-family: Arial, sans-serif; font-size: 16px; font-weight: 700; color: #666666; }
+    .content .comment-left { float: left; display: inline; width: 32px; margin-right: 10px; }
+    .content .comment-right { float: left; display: inline; max-width: 90%; }
+    #submit { background: #0099ff; border-radius: 5px; padding: 6px 0px; margin-bottom: 10px; border: none; color: #ffffff; font-size: 15px; font-weight: 700; -webkit-appearance: none; }
+
+    /* Comment listing section - Avatar, Meta Information, and Comment Display. See functions.php for customizations */
+    .content .sfw-comment { margin: 20px 0 30px; }
+
+    .content .comments { margin: 20px 0 30px; }
+    .content .comments .children { padding-left: 50px; }
+    .content .comments a { color: #0099ff; font-family: Arial, sans-serif; font-weight: 700; font-size: 14px; }
+    .content .comment-body { display: block; margin-bottom: 20px; }
+    .content .comment-column { display: block; margin-top: 20px; }
+    .content .comment-author.vcard { display: block; width: 32px; height: 32px; }
+    .content .comment-meta.commentmetadata { display: block; float: left; }
+    .content .comment-meta.commentmetadata a { color: #555555; font-weight: 700; font-size: 16px; font-family: Arial, sans-serif; text-decoration: none; }
+    .content .comment-awaiting-moderation { display: block; float: left; font-family: Arial, sans-serif; font-size: 14px; line-height: 150%; color: #0099ff; font-weight: 700; }
+    .content .comment-text { display: block; float: left; font-family: Arial, sans-serif; font-size: 14px; line-height: 150%; }
+    .content .comment-text p { margin: 10px 0 3px; word-break: keep-all; }
+    .content .reply { margin-bottom: 5px; }
+
+    /* Sidebar widget titles and text */
+    .content .widget-title { display: block; font-size: 18px; color: #0099ff; font-style: italic; font-weight: 700; margin: 25px 0 0px 0; font-family: Arial, sans-serif; }
+        .content .widget-title a { color: #0099ff; text-decoration: none; }
+    .content .widget-text { display: block; font-size: 13px; line-height: 140%; color: #000000; font-weight: 400; margin: 10px 0; font-family: Arial, sans-serif; }
+    .content .widget_recent_entries ul li a { display: block; color: #0099ff; font-size: 13px; padding: 12px 0 14px; line-height: 140%; border-bottom: 1px solid #ccc; font-family: Arial, sans-serif; }
+    .show-button { display: inline-block; cursor: pointer; height: 12px; width: 12px; } /* This is the button in the sidebar that is blue with a plus sign in it */
+
+ /* This is for the OWC Radio Podcast section on the homepage */
+.radio { display: block; background: #000 url('./images/radio.png') no-repeat; height: 137px; margin: 0px 40px 20px; overflow: auto; }
+    .radio .wrapper { float: right; display: block; width: 470px; padding: 10px 50px 10px 0px;}
+    .radio .title { display: block; font-size: 24px; font-family: Arial, sans-serif; font-weight: 700; color: #ffffff; line-height: 140%; }
+    .radio .cont { display: block; font-size: 14px; color: #ffffff; font-family: Arial, sans-serif; line-height: 140%; }
+
+#sidebar { float: left; margin-bottom: 30px; }
+#uwpqsf_id { border: none; }
+#uwpqsf_id .uwpqsf_class label.uwpqsf_class { color: #0099ff; font-weight: 600; padding: 5px 0; font-size: 16px; font-family: Arial, sans-serif; display: block; font-style: italic; margin: 10px 0 3px 0; }
+
+/* Easy Archives Plugin Styles */
+#easy-archives { margin-bottom: 30px; }
+#easy-archives .ea-loading{background:url(../img/ajax-loader.gif) 0 50% no-repeat;padding-left:22px;height:16px;line-height:16px;display:block;}
+#easy-archives .ea-open { margin-left: 20px; }
+#easy-archives .ea-closed{display:none;}
+#easy-archives .ea-collapse,#easy-archives .ea-expand{display:block;float:left;width:16px;height:16px;cursor:pointer;}
+#easy-archives .ea-collapse{background:url(../img/icons.png) 0 -100px no-repeat;}
+#easy-archives .ea-expand{background:url(../img/icons.png) 0 0 no-repeat;}
+#easy-archives .ea-title .ea-detail{font-weight:bolder; color: #0099ff; font-size: 18px; font-style: italic; text-decoration: none; padding-bottom: 7px; display: inline-block; }
+#easy-archives .ea-month{padding:10px;}
+#easy-archives .ea-month li{list-style:none; color: #000; font-size: 16px; font-style: italic; display: table; width: 100%; }
+#easy-archives .ea-month li .archive_date { color: #000; font-size: 16px; font-style: italic; display: table-cell; padding-right: 15px; font-weight: 700; vertical-align: middle; width: 38px; text-align: right; }
+#easy-archives .ea-month li a{ display: inline-block; max-width: 90%; margin: 3px 0px; list-style:none; color: #000; text-decoration: none; cursor: pointer; font-size: 16px; font-weight: 400; font-style: normal; line-height: 140%; font-family: Helvetica, Arial, sans-serif; }
+#easy-archives li{margin-top:5px;}
+#easy-archives li span,#easy-archives .ea-title span{margin-left:5px;font-size:13px;color:#999;}
+.ea-year,.ea-author{font-weight:600; font-family: 'Source Sans Pro', sans-serif; color: #0099ff; }
+#ea-filter{height:24px;padding-bottom:20px;}
+#ea-filter select,#ea-filter input{color: #fff; text-decoration: none; background: #0099ff; font-weight: 700; padding: 6px 15px; margin-right: 10px; border-radius: 5px; border: 1px solid #ccc; font-family: Arial, sans-serif; display: inline-block;height: 27px; -webkit-appearance: none;}
+#ea-filter select { background: url(../img/dropdown.gif) no-repeat right #0099ff; }
+
+/* These are the buttons to navigate between pages of postings. Previous and next. */
+.nav-wrapper { display: block; text-align: center; padding: 30px 0; }
+.nav-previous a, .nav-next a { color: #ffffff; text-decoration: none; background: #0099ff; font-weight: 700; padding: 6px 15px; border-radius: 5px; border: 1px solid #ccc; font-family: Arial, sans-serif; display: inline-block; }
+.nav-disabled { color: #ffffff; text-decoration: none; background: #999999; font-weight: 700; padding: 6px 15px; border-radius: 5px; border: 1px solid #ccc; font-family: Arial, sans-serif; display: inline-block; }
+
+/* Everything contained in the footer for every page. Most gets thrown out in mobile section */
+#footer { width: 990px; margin: 0 auto; padding: 0; background: #18376d; color: #ffffff; font-family: arial, sans-serif; font-size: 15px; }
+    #footer a { color: #ffffff; }
+
+    #footer .left_column { display: inline; float: left; width: 285px; border-right: 1px solid #ffffff; padding: 35px 0px 42px 40px; }
+    #footer .left_cont { display: inline-block; width: auto; margin-top: 10px; }
+    #footer .left_cont ul li { line-height: 140%; width: 140px; display: inline-block; }
+
+    #footer .right_column { display: inline; float: left; width: 580px; padding: 35px 40px 35px 40px; }
+    #footer .right_cont { display: block; line-height: 140%; margin-top: 10px; }
+    #footer .right_cont .title { display: block; font-size: 20px; font-weight: 700; margin: 10px 0; }
+
+    /* Final text at the bottom of the page beneath the footer */
+    .subfooter { display: block; margin: 20px auto 50px; font-family: Arial, sans-serif; text-align: center; font-size: 11px; color: #666666; line-height: 170%; }
+
+
+
+/* #Clearing
+================================================== */
+
+    /* Self Clearing Goodness */
+    .container:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+
+    /* Use clearfix class on parent to clear nested columns,
+    or wrap each row of columns in a <div class="row"> */
+    .clearfix:before,
+    .clearfix:after,
+    .row:before,
+    .row:after {
+      content: '\0020';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .row:after,
+    .clearfix:after {
+      clear: both; }
+    .row,
+    .clearfix {
+      zoom: 1; }
+
+    /* You can also use a <br class="clear" /> to clear columns */
+    .clear {
+      clear: both;
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
+
+
+
+
+
+/* Newsletter and modal styles */
+#myBtn {cursor:pointer; text-decoration:none;}
+.newsletter-title { padding-bottom: 10px; font-weight: bold; margin-top: 40px; color: #010102; font-size: 32px; font-family: "Georgia","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif; }
+.modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.6); }
+.modal-content { text-align: center; background-color: #fefefe; margin: 15% auto; padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; background-color: #eeeeee; width: 495px; border: 12px solid #fff; }
+.close {font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif; color: #000; float: right; font-size: 12px; text-decoration: underline; }
+.close:hover,
+.close:focus { cursor: pointer }
+#newsletter-modal h2 { text-align: center; font-size: 32px; }
+.label-email {font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;  font-size: 14px; font-weight: bold; color: #000; display: block; text-align: left; padding-left: 2px; padding-bottom: 5px; }
+.input-newsletter { float: left; font-size: 14px; background-color: #FFF; border: 1px solid #000; cursor: text; height: auto!important; line-height: 26px; margin: 0 0 10px; overflow: hidden; padding: 7px 10px; position: relative; width: 310px; }
+.btn-submit { text-transform: uppercase; font-family: "Titillium","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif; padding: 0px; width: 120px; height: 42px; font-weight: 700; text-align: center; font-size: 14px; line-height: 100%; letter-spacing: -.15px; background-color: #0099ff; position: relative; display: inline-block; color: #fff; outline: none; -webkit-appearance: none; -moz-appearance: none; border: 1px solid #0099ff; margin-left: 8px; }
+.newsletter-wrap { width: 461px; margin-right: auto; margin-left: auto; margin-top: 40px; }
+.checkbox-receive { text-align: left; float: left; margin-left: 2px!important; font-size: 12px; color: #444; }
+.newsletter-notify {font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;  text-align: left; color: #444; font-size: 14px; font-style: italic; margin-top: 83px; }
+.newsletter-signup {font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;  font-size: 14px; color: #000; padding-left: 10px; padding-right: 10px; line-height: 150%; }
+#status { float: left; padding-top: 10px; position: absolute; display: block; }
+
+.invalid input:required:invalid { border: 1px solid #ff0000 }
+.invalid input:required:valid { border: 1px solid #333 }
