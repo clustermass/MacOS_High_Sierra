@@ -1,8 +1,9 @@
-### MacOS High Sierra full installation image for USB
+### Data recovery and reformatting 2010 MacBook Pro Kingston SSD drive from APFS to HSF+ & clean High Sierra installation after invalid o_oid (0x233b75) Object map is invalid. APFS error.
 
 Recenly my 2010 Macbook pro with High Sierra system installed on Kingston 256gb SSD drive and APFS file system experienced kernel panic crash due to poorly written video driver. It turned out that APFS can fail due to certain system crashes. In my case, after mac failed to boot I was able to boot in recovery with some apple tools like disk utility, terminal and other. I tried to fix it with disk doctor utility, but got an error
 
 `error: om: btn: invalid o_oid (0x233b75)`
+
 `Object map is invalid.`
 
 Some guy named Matt already [described this problem in his blog](https://matt.sh/apfs-object-map-free-recovery), but to sum up, AFAIK there is no way to fix this problem rather than extract all available data and reinstall the system.
@@ -13,7 +14,7 @@ After I recovered whatever was possible, I needed to reinstall MacOS High Sierra
 
 It was sort of surprise for me that I spent 2 hours searching on the internet for a working High Sierra bootable image that I could put on my 8gb flash drive and do a clean install. So, when I finally downloaded it and made a bootable USB I decided to upload it for anyone who is in the same situalion as I was. Here is 
 
-#####[MacOS High Sierra full 5gb installation image for USB](https://drive.google.com/file/d/1bTXvIUh7zKG0f6nyZbzrwGVly_H5hIVQ/view?usp=sharing)
+### [MacOS High Sierra full 5gb installation image for USB](https://drive.google.com/file/d/1bTXvIUh7zKG0f6nyZbzrwGVly_H5hIVQ/view?usp=sharing)
 
 with free USB imaging tool included. All you need is working Windows machine and 8GB flash drive.
  
