@@ -12,7 +12,9 @@ In my case, I was able to boot mac from Ubuntu USB drive, pull and compile apfs-
 After I recovered whatever was possible, I needed to reinstall MacOS High Sierra, and I decided to convert SSD filesystem from APFS to HSF+.
 
 It was sort of surprise for me that I spent 2 hours searching on the internet for a working High Sierra bootable image that I could put on my 8gb flash drive and do a clean install. So, when I finally downloaded it and made a bootable USB I decided to upload it for anyone who is in the same situalion as I was. Here is 
+
 #####[MacOS High Sierra full 5gb installation image for USB](https://drive.google.com/file/d/1bTXvIUh7zKG0f6nyZbzrwGVly_H5hIVQ/view?usp=sharing)
+
 with free USB imaging tool included. All you need is working Windows machine and 8GB flash drive.
  
 The process of reformatting the drive and converting it from APFS to HSF+ is described [here](https://blog.macsales.com/46896-how-to-revert-a-drive-from-apfs-back-to-hfs/).
